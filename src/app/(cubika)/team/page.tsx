@@ -8,8 +8,9 @@ import { motion } from "framer-motion";
 import team2 from "../../../../public/images/team-2.webp";
 import team4 from "../../../../public/images/team.webp";
 import areaServicio from "../../../../public/images/área de servicio.jpeg";
-import areaOperacion from "../../../../public/images/áreadeoperación.jpg";
-import quienesSomos from "../../../../public/images/quienes-somos-2.webp";
+import areaOperacion from "../../../../public/images/operacion.jpg";
+import coverTeam from "../../../../public/images/team-web1.jpg";
+
 
 export default function Team() {
   // Animaciones suaves
@@ -51,16 +52,16 @@ export default function Team() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative h-[757px] w-[95%] mx-auto rounded-3xl mb-8 overflow-hidden"
+            className="relative h-[600px] w-[90%] mx-auto rounded-3xl mb-8 overflow-hidden"
           >
             <Image
-              src={quienesSomos}
+              src={coverTeam}
               alt="Equipo Cubika"
               fill
               className="object-cover scale-110"
               priority
             />
-            <div className="absolute inset-0 bg-black/40 rounded-3xl" />
+            <div className="absolute inset-0 bg-black/60 rounded-3xl" />
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
               <h1 className="text-6xl font-bold text-white uppercase">
                 El corazón detrás de
