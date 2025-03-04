@@ -40,17 +40,18 @@ export default function Home() {
     fadeIn: {
       initial: { opacity: 0 },
       animate: { opacity: 1 },
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
     },
     fadeInUp: {
-      initial: { opacity: 0, y: 20 },
+      initial: { opacity: 0, y: 30 },
       animate: { opacity: 1, y: 0 },
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
     },
     stagger: {
       animate: {
         transition: {
-          staggerChildren: 0.15
+          staggerChildren: 0.1,
+          delayChildren: 0.2
         }
       }
     }
@@ -85,16 +86,16 @@ export default function Home() {
   const principiosRef = useRef(null);
   const proyectosRef = useRef(null);
 
-  const quienesSomosInView = useInView(quienesSomosRef, { once: true });
-  const principiosInView = useInView(principiosRef, { once: true });
+  const quienesSomosInView = useInView(quienesSomosRef, { once: true, amount: 0.2 });
+  const principiosInView = useInView(principiosRef, { once: true, amount: 0.2 });
   const proyectosInView = useInView(proyectosRef, { once: true, amount: 0.1 });
 
   const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
     }
   };
 
@@ -134,14 +135,14 @@ export default function Home() {
             logo={heroImage.src}
           />
           <HeroCarousel
-            image={aboutHero.src}
-            text="Somos una empresa de Cubika, especializada en la administración de ornato en proyectos habitacionales."
-            logo={heroImage3.src}
-          />
-          <HeroCarousel
             image={aboutUsImage.src}
             text="Construimos hogares sostenibles que respetan la naturaleza y cumplen el sueño de una vida tranquila."
             logo={heroImage2.src}
+          />
+          <HeroCarousel
+            image={aboutHero.src}
+            text="Somos una empresa de Cubika, especializada en la administración de ornato en proyectos habitacionales."
+            logo={heroImage3.src}
           />
         </Carousel>
         <motion.div
@@ -284,7 +285,7 @@ export default function Home() {
           <div className="w-full h-[300px] md:h-[400px] mb-8">
             <ImageTextCard
               title="Grupo Cubika"
-              text="En Cubika, transformamos terrenos en hogares sostenibles, con un enfoque en diseño, innovación y desarrollo urbano. Desde nuestra fundación, hemos trabajado para crear experiencias de vida únicas que respeten el medio ambiente y mejoren la calidad de vida de nuestros clientes. "
+              text="Transformamos terrenos en hogares sostenibles, con un enfoque en diseño, innovación y desarrollo urbano. Desde nuestra fundación, hemos trabajado para crear experiencias de vida únicas que respeten el medio ambiente y mejoren la calidad de vida de nuestros clientes. "
               image={cubika}
             />
           </div>
@@ -305,7 +306,7 @@ export default function Home() {
           <div className="w-full h-[300px] md:h-[400px] mb-8">
             <ImageTextCard
               title="Prados de Minerva"
-              text="Construyendo el futuro"
+              text="Nuestro primer proyecto habitacional en el mercado guatemalteco brindado acceso a la primera vivienda."
               image={prados}
             />
           </div>
