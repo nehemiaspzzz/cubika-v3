@@ -30,7 +30,7 @@ export default function FAQ() {
       questions: [
         {
           question: "¿Cuál es el proceso para comprar una propiedad con Cubika?",
-          answer: "El proceso comienza con una consulta inicial donde evaluamos sus necesidades. Luego programamos una visita a las propiedades de interés, asesoramos en la selección y facilitamos todo el proceso legal y financiero hasta la entrega de su nuevo hogar."
+          answer: "El proceso comienza con una consulta inicial donde evaluamos tus necesidades. Luego programamos una visita al proyecto de interés, asesoramos en la selección y facilitamos todo el proceso legal y financiero hasta la entrega de su nuevo hogar."
         },
         {
           question: "¿Qué documentos necesito para iniciar el proceso de compra?",
@@ -38,7 +38,7 @@ export default function FAQ() {
         },
         {
           question: "¿Ofrecen opciones de financiamiento?",
-          answer: "Sí, trabajamos con múltiples instituciones financieras y podemos ayudarle a encontrar la mejor opción de financiamiento que se adapte a sus necesidades y capacidad de pago."
+          answer: "Sí, trabajamos con múltiples instituciones financieras y podemos ayudarte en encontrar la mejor opción de financiamiento que se adapte a tus necesidades y capacidad de pago."
         }
       ]
     },
@@ -46,12 +46,12 @@ export default function FAQ() {
       category: "Nuestros Proyectos",
       questions: [
         {
-          question: "¿Dónde están ubicados sus proyectos?",
+          question: "¿Dónde están ubicados tus proyectos?",
           answer: "Nuestros proyectos están estratégicamente ubicados en zonas de alto desarrollo en Guatemala, con fácil acceso a servicios esenciales, centros comerciales y vías principales."
         },
         {
           question: "¿Qué amenidades incluyen sus proyectos?",
-          answer: "Nuestros proyectos incluyen amenidades como áreas verdes, parques infantiles, zonas de ejercicio, seguridad 24/7, y en algunos casos, áreas sociales y piscinas. Las amenidades específicas varían según el proyecto."
+          answer: "Nuestros proyectos incluyen amenidades como áreas verdes, parques infantiles, zonas de ejercicio, seguridad 24/7, y áreas sociales. Las amenidades específicas varían según el proyecto."
         },
         {
           question: "¿Cuánto tiempo toma la construcción de una vivienda?",
@@ -64,11 +64,11 @@ export default function FAQ() {
       questions: [
         {
           question: "¿Qué garantías ofrecen en sus propiedades?",
-          answer: "Ofrecemos garantías sobre aspectos estructurales, acabados y equipamiento según los términos específicos de cada proyecto. Estas garantías están detalladas en el contrato de compraventa."
+          answer: "Ofrecemos garantías sobre aspectos estructurales, acabados y equipamiento según los términos específicos de cada proyecto. Estas se encuentran detalladas en el manual de garantias."
         },
         {
           question: "¿Cómo manejan el mantenimiento de las áreas comunes?",
-          answer: "Contamos con un equipo dedicado al mantenimiento de áreas comunes y trabajamos con empresas especializadas para garantizar el óptimo funcionamiento de todas las instalaciones."
+          answer: "Contamos con un equipo dedicado al mantenimiento de áreas comunes y trabajamos con una empresa especializada para garantizar el óptimo funcionamiento de todas las instalaciones."
         },
         {
           question: "¿Tienen servicio de atención al cliente post-venta?",
@@ -81,7 +81,7 @@ export default function FAQ() {
       questions: [
         {
           question: "¿Qué documentación legal recibo al comprar?",
-          answer: "Al finalizar la compra, recibirá la escritura de propiedad debidamente registrada, planos de la propiedad, manual del propietario y toda la documentación relacionada con garantías y reglamentos."
+          answer: "Al finalizar la compra, recibirá la escritura de propiedad debidamente registrada, planos de la propiedad, factura, documento contable, manual del propietario y toda la documentación relacionada con garantías y reglamentos."
         },
         {
           question: "¿Cómo se manejan los trámites municipales?",

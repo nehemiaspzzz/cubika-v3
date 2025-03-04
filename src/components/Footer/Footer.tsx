@@ -13,24 +13,14 @@ export const Footer = () => {
                     <Image
                         src={logoCubika}
                         alt="Logo Cubika"
-                        className="w-40 md:w-40 mb-3"
+                        className="w-48 md:w-64 mb-3"
                     />
-                    <div className="w-full md:w-3/4 mb-4">
-                        <p className="text-sm md:text-base">
-                        Cubika es una empresa guatemalteca comprometida con el desarrollo inmobiliario sostenible e innovador. 
-                        </p>
-                    </div>
                 </div>
 
                 {/* Links */}
                 <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-4">
                     <div>
                         <ul className="flex flex-col items-center md:items-start space-y-2">
-                            <li className="text-sm md:text-base hover:text-primary transition-colors cursor-pointer">
-                                <Link href="/about">
-                                    Sobre Nosotros
-                                </Link>
-                            </li>
                             <li className="text-sm md:text-base hover:text-primary transition-colors cursor-pointer">
                                 <Link href="/brands">
                                 Nuestras Marcas

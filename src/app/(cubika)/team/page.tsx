@@ -5,10 +5,11 @@ import Image from "next/image";
 import { ButtonTextCard } from "@/components/Cards/ButtonTextCard";
 import { motion } from "framer-motion";
 
-import team1 from "../../../../public/images/team-1.webp";
 import team2 from "../../../../public/images/team-2.webp";
-import team3 from "../../../../public/images/team-3.webp";
 import team4 from "../../../../public/images/team.webp";
+import areaServicio from "../../../../public/images/área de servicio.jpeg";
+import areaOperacion from "../../../../public/images/áreadeoperación.jpg";
+import quienesSomos from "../../../../public/images/quienes-somos-2.webp";
 
 export default function Team() {
   // Animaciones suaves
@@ -46,12 +47,30 @@ export default function Team() {
         className="relative"
       >
         <div className="mt-2 md:mt-8 ">
-          <Hero
-            title="El corazón detrás de"
-            subtitle="nuestra visión"
-            heroImage="bg-about-hero"
-            needBackground={false}
-          />
+          <motion.section 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="relative h-[757px] w-[95%] mx-auto rounded-3xl mb-8 overflow-hidden"
+          >
+            <Image
+              src={quienesSomos}
+              alt="Equipo Cubika"
+              fill
+              className="object-cover scale-110"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/40 rounded-3xl" />
+            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
+              <h1 className="text-6xl font-bold text-white uppercase">
+                El corazón detrás de
+              </h1>
+              <div className="w-1/4 h-px bg-white my-4 opacity-40" />
+              <h2 className="text-4xl font-bold text-white uppercase">
+                nuestra visión
+              </h2>
+            </div>
+          </motion.section>
         </div>
         <motion.section
           initial={{ opacity: 0 }}
@@ -65,7 +84,7 @@ export default function Team() {
         >
           <SubHero
             title="Nuestra Dirección Empresarial"
-            subtitle="En Cubika, nuestra dirección empresarial está guiada por principios de sostenibilidad, innovación y compromiso. Nos enfocamos en desarrollar proyectos inmobiliarios que integren diseño funcional, respeto por el entorno y soluciones accesibles para las familias guatemaltecas."
+            subtitle="Detrás de cada proyecto exitoso existe un equipo extraordinario de personas comprometidas con la excelencia. Cada integrante aporta su talento y pasión para crear espacios excepcionales, convirtiendo ideas innovadoras en hogares que transforman vidas en Guatemala."
           />
         </motion.section>
 
@@ -107,7 +126,7 @@ export default function Team() {
             >
               <ButtonTextCard 
                 title="área administrativa"
-                text="Nuestra filosofía empresarial es contribuir de manera sostenible, con innovación en el diseño y construcción de cada proyecto, que nos motivan a crear sueños, ilusiones y emociones que estamos seguros de lograrlo en cada uno de nuestros clientes, con el motor principal que es nuestro equipo de trabajo."
+                text="El equipo administrativo constituye la columna vertebral de Cubika. Con una gestión precisa de recursos, procesos y documentación, garantizamos que cada proyecto alcance la excelencia, cumpliendo rigurosamente con los estándares de calidad y normativas establecidas."
                 showButton={false}
               />
             </motion.div>
@@ -122,7 +141,7 @@ export default function Team() {
               className="relative w-full md:w-[98%] h-[600px] rounded-[30px] overflow-hidden order-2 md:order-2 justify-self-end"
             >
               <Image
-                src={team1}
+                src={team4}
                 alt="Equipo Administrativo Cubika"
                 fill
                 className="object-cover"
@@ -170,8 +189,8 @@ export default function Team() {
               className="w-full md:w-[98%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-2 md:order-2"
             >
               <ButtonTextCard
-                title="Área de ventas"
-                text="Nuestro equipo de ventas está comprometido con brindar un servicio excepcional, asesorando y acompañando a nuestros clientes en cada paso del proceso, asegurando que encuentren la propiedad perfecta que se ajuste a sus necesidades y sueños."
+                title="Área comercial"
+                text="Profesionales apasionados conforman el equipo comercial, dedicados a materializar los sueños de cada cliente. La experiencia en el mercado inmobiliario permite brindar una asesoría estratégica para encontrar la propiedad perfecta, adaptada a necesidades específicas y presupuestos diversos."
                 showButton={false}
               />
             </motion.div>
@@ -200,8 +219,8 @@ export default function Team() {
               className="w-full md:w-[98%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-1"
             >
               <ButtonTextCard
-                title="Área de servicio"
-                text="Nuestra filosofía empresarial es contribuir de manera sostenible, con innovación en el diseño y construcción de cada proyecto, que nos motivan a crear sueños, ilusiones y emociones que estamos seguros de lograrlo en cada uno de nuestros clientes, con el motor principal que es nuestro equipo de trabajo."
+                title="área de operación"
+                text="La supervisión y ejecución de proyectos inmobiliarios recae en el equipo de operaciones. Cada desarrollo se gestiona bajo estrictos estándares de calidad, implementando cronogramas efectivos y manteniendo una sólida comunicación entre todas las partes involucradas."
                 showButton={false}
               />
             </motion.div>
@@ -216,7 +235,7 @@ export default function Team() {
               className="relative w-full md:w-[98%] h-[600px] rounded-[30px] overflow-hidden order-2 md:order-2"
             >
               <Image
-                src={team3}
+                src={areaOperacion}
                 alt="Equipo de Servicio Cubika"
                 fill
                 className="object-cover"
@@ -247,8 +266,8 @@ export default function Team() {
               className="w-full md:w-[98%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-2"
             >
               <ButtonTextCard
-                title="área de Operacion"
-                text="Nuestra filosofía empresarial es contribuir de manera sostenible, con innovación en el diseño y construcción de cada proyecto, que nos motivan a crear sueños, ilusiones y emociones que estamos seguros de lograrlo en cada uno de nuestros clientes, con el motor principal que es nuestro equipo de trabajo."
+                title="área de servicio"
+                text="Un equipo dedicado a mantener impecables los espacios y garantizar un ambiente acogedor. La atención al detalle en limpieza, mantenimiento y presentación de las instalaciones refleja el compromiso con la excelencia y el bienestar de quienes nos visitan."
                 showButton={false}
               />
             </motion.div>
@@ -263,7 +282,7 @@ export default function Team() {
               className="relative w-full md:w-[98%] h-[600px] rounded-[30px] overflow-hidden order-2 md:order-1"
             >
               <Image
-                src={team4}
+                src={areaServicio}
                 alt="Equipo de Operación Cubika"
                 fill
                 className="object-cover"

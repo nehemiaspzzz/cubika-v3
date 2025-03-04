@@ -144,6 +144,8 @@ export default function Home() {
             text="Nos especializamos en la administración y manejo de ornato en proyectos habitacionales."
             logo={heroImage3.src}
           />
+          
+          
         </Carousel>
         <motion.div
           initial={{ opacity: 0 }}
@@ -432,77 +434,77 @@ export default function Home() {
           once: true,
           amount: 0.3
         }}
-        className="flex flex-col lg:flex-row w-full items-center justify-center mb-24"
-      >
-        <div className="w-full lg:w-[70%] px-4 lg:px-0 order-2 lg:order-1 mb-16 lg:mb-0">
-          <Image
-            src={team}
-            alt="Team"
-            width={1920}
-            height={1080}
-            quality={100}
-            className="w-full h-auto lg:h-[700px] rounded-xl lg:rounded-r-2xl lg:rounded-l-none"
-          />
-        </div>
-        <div className="flex flex-col w-full lg:w-[40%] items-center justify-center px-4 lg:px-0 mt-8 lg:mt-0 order-1 lg:order-2">
-          <div className="w-[310px] h-[3px] bg-primary my-4"></div>
-          <h2 className="text-center text-3xl lg:text-4xl font-bold uppercase">El equipo que nos define</h2>
-          <div className="w-full lg:w-[110%] h-auto bg-white rounded-2xl lg:rounded-l-2xl p-6 lg:p-8 mt-8 lg:mt-14 lg:ml-[-10%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu">
-            <p className="text-base lg:text-lg ">
-              Nuestro equipo directivo, gerencial, ventas, constructivo, de desarrollo y administrativo,
-              se caracteriza por la pasión y dedicación que se le da a cada vivienda de nuestros clientes,
-              donde buscamos dar una mejor calidad de vida.
-            </p>
-          </div>
-          <div className="w-[90%] h-auto bg-secondary rounded-2xl p-6 lg:p-10 mt-8 lg:mt-14 mb-16 lg:mb-0
-              transition-all duration-300 ease-in-out hover:scale-105">
-            <p className="text-white text-2xl lg:text-3xl font-bold text-center">
-              Pero sin duda lo que nos hace únicos es poder trascender y formar parte de un sueño de un nuevo hogar que perdurará en el tiempo.
-            </p>
-          </div>
-        </div>
-      </motion.section>
-      <div className="h-16 md:h-24"></div>
-      <motion.section
-        variants={animations.fadeIn}
-        initial="initial"
-        whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
         id="news"
-        className="mx-4 lg:mx-14"
+        className="mx-4 lg:mx-14 py-12 bg-gray-50 rounded-3xl"
       >
-        <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-4 sm:gap-0">
-          <h2 className="text-xl lg:text-2xl font-bold text-center sm:text-left">Últimas novedades de Cubika</h2>
-          <a href="/blog" className="text-[#838383] text-sm font-bold">Descubre más</a>
+        <div className="flex flex-col items-center justify-center mb-8">
+          <motion.div
+            variants={animations.fadeIn}
+            className="w-[310px] h-[3px] bg-primary my-4"
+          />
+          <motion.h2
+            variants={animations.fadeIn}
+            className="text-center text-3xl lg:text-4xl font-bold uppercase mb-3"
+          >
+            Últimas novedades
+          </motion.h2>
+          <motion.p
+            variants={animations.fadeIn}
+            className="text-center text-gray-600 text-lg mb-6 max-w-2xl"
+          >
+            Mantente informado sobre nuestros proyectos y avances
+          </motion.p>
+          <motion.div
+            variants={animations.fadeIn}
+            className="flex justify-center"
+          >
+            <Link 
+              href="/blog" 
+              className="inline-flex items-center text-primary hover:text-secondary transition-colors duration-300 font-semibold group"
+            >
+              Ver todas las noticias
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-5 w-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" 
+                viewBox="0 0 20 20" 
+                fill="currentColor"
+              >
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
+
         <motion.div
           variants={animations.fadeIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 my-8"
+          className="max-w-7xl mx-auto"
         >
-          {posts.map((post: any, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              viewport={{ once: true }}
-            >
-              <PostsCard
-                header={post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/default-image.jpg'}
-                title={post.title.rendered}
-                text={post.excerpt.rendered}
-                date={post.date}
-                author={post._embedded?.author?.[0]?.name}
-                slug={post.slug}
-              />
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 my-6 px-4 lg:px-8">
+            {posts.slice(0, 3).map((post: any, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="max-w-sm mx-auto w-full"
+              >
+                <PostsCard
+                  header={post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/default-image.jpg'}
+                  title={post.title.rendered}
+                  text={post.excerpt.rendered}
+                  date={post.date}
+                  author={post._embedded?.author?.[0]?.name}
+                  slug={post.slug}
+                  className="h-full"
+                />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </motion.section>
       <Footer />
