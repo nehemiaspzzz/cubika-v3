@@ -136,12 +136,12 @@ export default function Home() {
           />
           <HeroCarousel
             image={aboutUsImage.src}
-            text="Construimos hogares sostenibles que respetan la naturaleza y cumplen el sueño de una vida tranquila."
+            text="Construimos hogares sostenibles en un entorno natural, con cercania a la ciudad."
             logo={heroImage2.src}
           />
           <HeroCarousel
             image={aboutHero.src}
-            text="Somos una empresa de Cubika, especializada en la administración de ornato en proyectos habitacionales."
+            text="Nos especializamos en la administración y manejo de ornato en proyectos habitacionales."
             logo={heroImage3.src}
           />
         </Carousel>
