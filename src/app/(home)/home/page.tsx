@@ -162,6 +162,69 @@ export default function Home() {
           once: true,
           amount: 0.3
         }}
+        id="propuesta"
+        className="flex flex-col items-center justify-center mt-10"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          variants={sectionVariants}
+          className="w-[310px] h-[3px] bg-secondary my-4"
+        />
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          variants={sectionVariants}
+          className="text-center text-4xl sm:text-5xl font-extrabold uppercase mb-8 px-4"
+        >
+          Nuestra propuesta al <br /> mundo
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          variants={sectionVariants}
+          className="w-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4"
+        >
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="Grupo Cubika"
+              text="En Cubika, transformamos terrenos en hogares sostenibles, con un enfoque en diseño, innovación y desarrollo urbano. Desde nuestra fundación, hemos trabajado para crear experiencias de vida únicas que respeten el medio ambiente y mejoren la calidad de vida de nuestros clientes. "
+              image={cubika}
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="J&L Servicios"
+              text="J&L, S.A. es una empresa de la corporación Cubika Inmobiliaria, S.A., especializada en la administración y manejo de ornato en proyectos habitacionales, nos enfocamos en ofrecer mecanismos eficientes en los complejos habitacionales, velamos por los intereses y el bien común de los propietarios."
+              image={jardines}
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="Arboleda los Encinos"
+              text="Arboleda Los Encinos, gestionado por Cubika, es un proyecto inmobiliario que ofrece viviendas sostenibles y accesibles, ideales para quienes sueñan con su primera casa. Ubicado en un entorno natural en Chinautla, Guatemala, el proyecto combina modernidad y respeto por el medio ambiente."
+              image={arboleda}
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="Prados de Minerva"
+              text="Construyendo el futuro"
+              image={prados}
+            />
+          </div>
+        </motion.div>
+      </motion.section>
+
+      <motion.section
+        variants={animations.fadeIn}
+        initial="initial"
+        whileInView="animate"
+        viewport={{
+          once: true,
+          amount: 0.3
+        }}
         id="quienes-somos"
         className="flex flex-col items-center justify-center mt-8"
       >
@@ -358,68 +421,6 @@ export default function Home() {
           className="w-[90%] h-auto rounded-xl"
         />
       </motion.div>
-      <motion.section
-        variants={animations.fadeIn}
-        initial="initial"
-        whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
-        id="propuesta"
-        className="flex flex-col items-center justify-center mt-10"
-      >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          variants={sectionVariants}
-          className="w-[310px] h-[3px] bg-secondary my-4"
-        />
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          variants={sectionVariants}
-          className="text-center text-4xl sm:text-5xl font-extrabold uppercase mb-8 px-4"
-        >
-          Nuestra propuesta al <br /> mundo
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          variants={sectionVariants}
-          className="w-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4"
-        >
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="Grupo Cubika"
-              text="En Cubika, transformamos terrenos en hogares sostenibles, con un enfoque en diseño, innovación y desarrollo urbano. Desde nuestra fundación, hemos trabajado para crear experiencias de vida únicas que respeten el medio ambiente y mejoren la calidad de vida de nuestros clientes. "
-              image={cubika}
-            />
-          </div>
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="J&L Servicios"
-              text="J&L, S.A. es una empresa de la corporación Cubika Inmobiliaria, S.A., especializada en la administración y manejo de ornato en proyectos habitacionales, nos enfocamos en ofrecer mecanismos eficientes en los complejos habitacionales, velamos por los intereses y el bien común de los propietarios."
-              image={jardines}
-            />
-          </div>
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="Arboleda los Encinos"
-              text="Arboleda Los Encinos, gestionado por Cubika, es un proyecto inmobiliario que ofrece viviendas sostenibles y accesibles, ideales para quienes sueñan con su primera casa. Ubicado en un entorno natural en Chinautla, Guatemala, el proyecto combina modernidad y respeto por el medio ambiente."
-              image={arboleda}
-            />
-          </div>
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="Prados de Minerva"
-              text="Construyendo el futuro"
-              image={prados}
-            />
-          </div>
-        </motion.div>
-      </motion.section>
       <div className="h-16 md:h-26"></div>
       <motion.section
         variants={animations.fadeIn}
