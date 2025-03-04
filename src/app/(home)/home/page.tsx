@@ -177,7 +177,7 @@ export default function Home() {
           variants={sectionVariants}
           className="text-center text-4xl sm:text-5xl font-extrabold uppercase mb-8 px-4"
         >
-          Nuestra propuesta al <br /> mundo
+          Portafolio
         </motion.h2>
 
         <motion.div
@@ -196,14 +196,14 @@ export default function Home() {
           <div className="w-full h-[300px] md:h-[400px] mb-8">
             <ImageTextCard
               title="J&L Servicios"
-              text="J&L, S.A. es una empresa de la corporación Cubika Inmobiliaria, S.A., especializada en la administración y manejo de ornato en proyectos habitacionales, nos enfocamos en ofrecer mecanismos eficientes en los complejos habitacionales, velamos por los intereses y el bien común de los propietarios."
+              text="Nos especializamos en la administración y manejo de ornato en proyectos habitacionales."
               image={jardines}
             />
           </div>
           <div className="w-full h-[300px] md:h-[400px] mb-8">
             <ImageTextCard
               title="Arboleda los Encinos"
-              text="Arboleda Los Encinos, gestionado por Cubika, es un proyecto inmobiliario que ofrece viviendas sostenibles y accesibles, ideales para quienes sueñan con su primera casa. Ubicado en un entorno natural en Chinautla, Guatemala, el proyecto combina modernidad y respeto por el medio ambiente."
+              text="Construimos hogares sostenibles en un entorno natural, con cercania a la ciudad."
               image={arboleda}
             />
           </div>

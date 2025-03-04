@@ -21,7 +21,7 @@ export const Header = () => {
             href: "/team"
         },
         {
-            title: "Nuestras Marcas", 
+            title: "Portafolio", 
             href: "/brands"
         }, 
         {
