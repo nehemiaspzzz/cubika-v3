@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 
 export const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname() || '/';
 
     const menuItems = [
@@ -31,31 +30,15 @@ export const Header = () => {
         }
     ];
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            setIsScrolled(scrollPosition > 50);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
     return (
         <>
-            <header className="w-full flex justify-between items-center py-4 px-4 md:px-12 lg:px-32 fixed top-2 left-0 right-0 z-[200]">
+            <header className="w-full flex justify-between items-center py-4 px-4 md:px-12 lg:px-32 fixed top-0 left-0 right-0 z-[200] bg-white shadow-md">
                 {/* Logo */}
                 <div className="relative">
-                    <div className={`
-                        absolute inset-0 
-                        transition-all duration-300 ease-in-out
-                        rounded-xl
-                        ${isScrolled ? 'bg-white/80 backdrop-blur-sm' : 'bg-transparent'}
-                    `}></div>
                     <Link href="/home" className="relative z-[100] block p-2">
                         <Image
                             src={logoCubika}
@@ -78,7 +61,7 @@ export const Header = () => {
                             className="h-8 w-8 transition-all duration-300 ease-in-out"
                             fill="none"
                             viewBox="0 0 24 24" 
-                            stroke={isScrolled ? "#cc965a" : "#cc965a"}
+                            stroke="#cc965a"
                         >
                             {!isMobileMenuOpen ? (
                                 <path 
@@ -101,7 +84,7 @@ export const Header = () => {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-8">
-                    <div className="rounded-xl px-8 py-3 flex items-center gap-8 bg-white/80 backdrop-blur-sm">
+                    <div className="rounded-xl px-8 py-3 flex items-center gap-8">
                         {menuItems.map((item) => (
                             <Link 
                                 key={item.title}

@@ -2,7 +2,6 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -11,9 +10,6 @@ const nextConfig = {
   },
   images: {
     domains: ["admin.grupocubika.com"],
-  },
-  env: {
-    REACT_APP_GOOGLE_MAPS_API_KEY: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   },
 };
 
