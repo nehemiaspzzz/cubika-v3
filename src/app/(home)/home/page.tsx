@@ -162,69 +162,6 @@ export default function Home() {
           once: true,
           amount: 0.3
         }}
-        id="propuesta"
-        className="flex flex-col items-center justify-center mt-10"
-      >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          variants={sectionVariants}
-          className="w-[310px] h-[3px] bg-secondary my-4"
-        />
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          variants={sectionVariants}
-          className="text-center text-4xl sm:text-5xl font-extrabold uppercase mb-8 px-4"
-        >
-          Portafolio
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          variants={sectionVariants}
-          className="w-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4"
-        >
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="Grupo Cubika"
-              text="En Cubika, transformamos terrenos en hogares sostenibles, con un enfoque en diseño, innovación y desarrollo urbano. Desde nuestra fundación, hemos trabajado para crear experiencias de vida únicas que respeten el medio ambiente y mejoren la calidad de vida de nuestros clientes. "
-              image={cubika}
-            />
-          </div>
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="J&L Servicios"
-              text="Nos especializamos en la administración y manejo de ornato en proyectos habitacionales."
-              image={jardines}
-            />
-          </div>
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="Arboleda los Encinos"
-              text="Construimos hogares sostenibles en un entorno natural, con cercania a la ciudad."
-              image={arboleda}
-            />
-          </div>
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="Prados de Minerva"
-              text="Construyendo el futuro"
-              image={prados}
-            />
-          </div>
-        </motion.div>
-      </motion.section>
-
-      <motion.section
-        variants={animations.fadeIn}
-        initial="initial"
-        whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
         id="quienes-somos"
         className="flex flex-col items-center justify-center mt-8"
       >
@@ -311,6 +248,70 @@ export default function Home() {
           />
         </motion.div>
       </motion.section>
+
+      <motion.section
+        variants={animations.fadeIn}
+        initial="initial"
+        whileInView="animate"
+        viewport={{
+          once: true,
+          amount: 0.3
+        }}
+        id="propuesta"
+        className="flex flex-col items-center justify-center mt-10"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          variants={sectionVariants}
+          className="w-[310px] h-[3px] bg-secondary my-4"
+        />
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          variants={sectionVariants}
+          className="text-center text-4xl sm:text-5xl font-extrabold uppercase mb-8 px-4"
+        >
+          Portafolio
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          variants={sectionVariants}
+          className="w-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4"
+        >
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="Grupo Cubika"
+              text="En Cubika, transformamos terrenos en hogares sostenibles, con un enfoque en diseño, innovación y desarrollo urbano. Desde nuestra fundación, hemos trabajado para crear experiencias de vida únicas que respeten el medio ambiente y mejoren la calidad de vida de nuestros clientes. "
+              image={cubika}
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="J&L Servicios"
+              text="Nos especializamos en la administración y manejo de ornato en proyectos habitacionales."
+              image={jardines}
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="Arboleda los Encinos"
+              text="Construimos hogares sostenibles en un entorno natural, con cercania a la ciudad."
+              image={arboleda}
+            />
+          </div>
+          <div className="w-full h-[300px] md:h-[400px] mb-8">
+            <ImageTextCard
+              title="Prados de Minerva"
+              text="Construyendo el futuro"
+              image={prados}
+            />
+          </div>
+        </motion.div>
+      </motion.section>
+
       <motion.section
         variants={animations.fadeIn}
         initial="initial"
