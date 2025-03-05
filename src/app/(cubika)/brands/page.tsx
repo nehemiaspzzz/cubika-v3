@@ -25,7 +25,7 @@ export default function Brands() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="w-full overflow-x-hidden pt-10"
+      className="w-full overflow-x-hidden pt-6 md:pt-10"
     >
       <motion.div 
         initial={{ opacity: 0 }}
@@ -51,15 +51,15 @@ export default function Brands() {
             ease: [0.22, 1, 0.36, 1]
           }}
           viewport={{ once: true }}
-          className="relative mb-16 md:mb-24 px-4 md:px-12 lg:px-16 mt-8 md:mt-16 max-w-[1400px] mx-auto"
+          className="relative mb-12 md:mb-24 px-4 md:px-12 lg:px-16 mt-6 md:mt-16 max-w-[1400px] mx-auto"
         >
           {/* Timeline */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20" />
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/0 via-primary to-primary/0" />
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20 hidden md:block" />
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/0 via-primary to-primary/0 hidden md:block" />
 
           {/* Arboleda los encinos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center justify-center relative">
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
               <ButtonTextCard
                 title="arboleda los encinos"
@@ -69,7 +69,7 @@ export default function Brands() {
               />
             </div>
             <motion.div 
-              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
@@ -83,8 +83,8 @@ export default function Brands() {
           </div>
 
           {/* JYL */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center justify-center relative mt-16 md:mt-24">
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
               <ButtonTextCard
                 title="Jyl"
@@ -94,7 +94,7 @@ export default function Brands() {
               />
             </div>
             <motion.div 
-              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
@@ -108,8 +108,8 @@ export default function Brands() {
           </div>
 
           {/* Prados de minerva */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center justify-center relative mt-16 md:mt-24">
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
               <ButtonTextCard
                 title="Prados de Minerva"
@@ -119,7 +119,7 @@ export default function Brands() {
               />
             </div>
             <motion.div 
-              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >

@@ -114,7 +114,7 @@ export default function Team() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -161,7 +161,7 @@ export default function Team() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -170,14 +170,12 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-1 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-2"
             >
-              <Image
-                src={team2}
-                alt="Equipo de Ventas Cubika"
-                fill
-                className="object-cover object-center hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 50vw"
+              <ButtonTextCard
+                title="Área comercial"
+                text="Profesionales apasionados conforman el equipo comercial, dedicados a materializar los sueños de cada cliente. La experiencia en el mercado inmobiliario permite brindar una asesoría estratégica."
+                showButton={false}
               />
             </motion.div>
             <motion.div
@@ -188,12 +186,14 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-2 md:order-2"
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <ButtonTextCard
-                title="Área comercial"
-                text="Profesionales apasionados conforman el equipo comercial, dedicados a materializar los sueños de cada cliente. La experiencia en el mercado inmobiliario permite brindar una asesoría estratégica."
-                showButton={false}
+              <Image
+                src={team2}
+                alt="Equipo de Ventas Cubika"
+                fill
+                className="object-cover object-center hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
           </motion.div>
@@ -209,7 +209,7 @@ export default function Team() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -256,7 +256,7 @@ export default function Team() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
