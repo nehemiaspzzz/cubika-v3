@@ -181,9 +181,9 @@ export default function About() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
                                 viewport={{ once: true }}
-                                className="hidden md:flex flex-col justify-center items-center gap-4"
+                                className="hidden md:flex flex-col justify-center items-center gap-1"
                             >
-                                <div className="flex flex-col text-6xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+                                <div className="flex flex-col text-2xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
                                     <span>V</span>
                                     <span>A</span>
                                     <span>L</span>

@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": 1741196611127,
+    "title": "Prueba",
+    "content": "prueba",
+    "template": "simple",
+    "createdAt": "2025-03-05T17:43:31.127Z",
+    "image": "/blog-images/1741196611127-main-team.webp"
+  }
+]

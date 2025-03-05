@@ -25,7 +25,7 @@ export const Header = () => {
             href: "/brands"
         }, 
         {
-            title: "Noticias", 
+            title: "Blog", 
             href: "/blog"
         }
     ];
@@ -36,14 +36,14 @@ export const Header = () => {
 
     return (
         <>
-            <header className="w-full flex justify-between items-center py-4 px-4 md:px-12 lg:px-32 fixed top-0 left-0 right-0 z-[200] bg-white shadow-md">
+            <header className="w-full flex justify-between items-center py-4 px-4 md:px-12 lg:px-32 fixed top-0 left-0 right-0 z-[200] bg-gradient-to-r from-[#1a2b4b] to-[#2a3b5b] backdrop-blur-md">
                 {/* Logo */}
                 <div className="relative">
                     <Link href="/home" className="relative z-[100] block p-2">
                         <Image
                             src={logoCubika}
                             alt="Logo Cubika"
-                            className="w-40 md:w-40 lg:w-48"
+                            className="w-40 md:w-40 lg:w-48 brightness-0 invert"
                             priority
                         />
                     </Link>
@@ -61,7 +61,7 @@ export const Header = () => {
                             className="h-8 w-8 transition-all duration-300 ease-in-out"
                             fill="none"
                             viewBox="0 0 24 24" 
-                            stroke="#cc965a"
+                            stroke="#ffffff"
                         >
                             {!isMobileMenuOpen ? (
                                 <path 
@@ -91,13 +91,15 @@ export const Header = () => {
                                 href={item.href}
                                 className={`
                                     text-base font-medium
-                                    hover:text-primary transition-all duration-300 ease-in-out
+                                    hover:text-primary transition-all duration-300 ease-in-out relative
+                                    group
                                     ${pathname === item.href 
                                         ? 'text-primary font-bold' 
-                                        : 'text-gray-700'}
+                                        : 'text-white'}
                                 `}
                             >
                                 {item.title}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                             </Link>
                         ))}
                     </div>
@@ -107,7 +109,7 @@ export const Header = () => {
                     >
                         <PrimaryButton 
                             text="Contáctanos" 
-                            className="text-base transition-all duration-300 ease-in-out hover:bg-primary/90"
+                            className="text-base transition-all duration-300 ease-in-out bg-white text-[#1a2b4b] hover:bg-primary hover:text-white"
                         />
                     </Link>
                 </nav>
@@ -116,7 +118,7 @@ export const Header = () => {
             {/* Mobile Navigation Overlay */}
             <div 
                 className={`
-                    md:hidden fixed inset-0 bg-white/95 backdrop-blur-md z-[90]
+                    md:hidden fixed inset-0 bg-gradient-to-br from-[#1a2b4b] to-[#2a3b5b] backdrop-blur-md z-[90]
                     transition-all duration-500 ease-in-out
                     ${isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}
                 `}
@@ -128,14 +130,15 @@ export const Header = () => {
                             href={item.href}
                             className={`
                                 text-2xl font-medium transition-all duration-300 ease-in-out
-                                hover:text-primary hover:scale-110 transform
+                                hover:text-primary hover:scale-110 transform relative group
                                 ${pathname === item.href 
                                     ? 'text-primary font-bold' 
-                                    : 'text-gray-700'}
+                                    : 'text-white'}
                             `}
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             {item.title}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                         </Link>
                     ))}
                     <Link 
@@ -145,7 +148,7 @@ export const Header = () => {
                     >
                         <PrimaryButton 
                             text="Contáctanos" 
-                            className="text-lg hover:bg-primary/90"
+                            className="text-lg bg-white text-[#1a2b4b] hover:bg-primary hover:text-white"
                         />
                     </Link>
                 </div>

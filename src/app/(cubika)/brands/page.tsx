@@ -53,17 +53,12 @@ export default function Brands() {
           viewport={{ once: true }}
           className="relative mb-12 md:mb-24 px-4 md:px-12 lg:px-16 mt-6 md:mt-16 max-w-[1400px] mx-auto"
         >
-          {/* Timeline */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20 hidden md:block" />
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/0 via-primary to-primary/0 hidden md:block" />
-
           {/* Arboleda los encinos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative">
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
               <ButtonTextCard
                 title="arboleda los encinos"
-                text="Arboleda Los Encinos, gestionado por Cubika, es un proyecto inmobiliario que ofrece viviendas sostenibles y accesibles. Ubicado en un entorno natural en Chinautla, Guatemala."
+                text="Donde la naturaleza y el lujo convergen en perfecta armonía. Un exclusivo desarrollo residencial que redefine el arte de vivir, fusionando la serenidad del entorno natural con la sofisticación urbana contemporánea."
                 buttonText="Descubre Arboleda"
                 buttonLink="https://www.arboledalosencinos.com.gt/"
               />
@@ -84,11 +79,10 @@ export default function Brands() {
 
           {/* JYL */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24">
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
               <ButtonTextCard
                 title="Jyl"
-                text="J&L, S.A. es una empresa especializada en la administración y manejo de ornato en proyectos habitacionales. Nos enfocamos en ofrecer mecanismos eficientes y velar por el bien común."
+                text="Elevamos la gestión residencial a un arte. Nuestro compromiso con la excelencia se refleja en cada detalle, creando experiencias excepcionales que transforman espacios en comunidades distinguidas."
                 buttonText="Conoce JYL"
                 buttonLink="https://jylservicios.com/"
               />
@@ -109,11 +103,10 @@ export default function Brands() {
 
           {/* Prados de minerva */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24">
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
               <ButtonTextCard
                 title="Prados de Minerva"
-                text="Prados de Minerva es un proyecto residencial que ofrece casas con diseños modernos y funcionales. Un espacio ideal para familias que buscan su primer hogar con excelente calidad de vida."
+                text="La fusión perfecta entre diseño contemporáneo y vida familiar. Un desarrollo residencial que hace realidad tus aspiraciones, donde cada espacio ha sido cuidadosamente diseñado para brindar una experiencia de vida excepcional."
                 buttonText="Explora Prados"
                 buttonLink="/prados"
               />
