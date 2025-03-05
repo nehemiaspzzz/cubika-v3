@@ -5,10 +5,10 @@ import Image from "next/image";
 import { ButtonTextCard } from "@/components/Cards/ButtonTextCard";
 import { motion } from "framer-motion";
 
-import team2 from "../../../../public/images/team-2.webp";
+import team2 from "../../../../public/images/servicio-1.jpg";
 import team4 from "../../../../public/images/team.webp";
-import areaServicio from "../../../../public/images/área de servicio.jpeg";
-import areaOperacion from "../../../../public/images/operacion.jpg";
+import areaServicio from "../../../../public/images/áreadeservicio.png";
+import areaOperacion from "../../../../public/images/servicio-1.png";
 import coverTeam from "../../../../public/images/team-web1.jpg";
 
 
@@ -170,13 +170,14 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="relative w-full md:w-[98%] h-[600px] rounded-[30px] overflow-hidden order-1 md:order-1"
+              className="relative w-full md:w-[98%] h-[500px] rounded-[30px] overflow-hidden order-1 md:order-1"
             >
               <Image
                 src={team2}
                 alt="Equipo de Ventas Cubika"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
             <motion.div
