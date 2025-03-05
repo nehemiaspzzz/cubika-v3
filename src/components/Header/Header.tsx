@@ -111,7 +111,7 @@ export const Header = () => {
                     >
                         <PrimaryButton 
                             text="Contáctanos" 
-                            className="text-base transition-all duration-300 ease-in-out bg-white text-[#1a2b4b] hover:bg-primary hover:text-white"
+                            className="text-base transition-all duration-300 ease-in-out bg-primary text-white"
                         />
                     </Link>
                 </nav>
@@ -150,7 +150,7 @@ export const Header = () => {
                     >
                         <PrimaryButton 
                             text="Contáctanos" 
-                            className="text-lg bg-white text-[#1a2b4b] hover:bg-primary hover:text-white"
+                            className="text-lg bg-primary text-white"
                         />
                     </Link>
                 </div>
