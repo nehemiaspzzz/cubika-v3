@@ -28,8 +28,10 @@ interface LocalPost {
   title: string;
   content: string;
   image?: string;
+  additionalImages?: string[];
   createdAt: string;
   category?: string;
+  template: 'simple' | 'gallery' | 'featured';
 }
 
 async function getLocalPosts(): Promise<LocalPost[]> {

@@ -51,77 +51,83 @@ export default function Brands() {
             ease: [0.22, 1, 0.36, 1]
           }}
           viewport={{ once: true }}
-          className="relative mb-16 md:mb-32 px-4 md:px-16 lg:px-24 mt-8 md:mt-16 max-w-[1600px] mx-auto"
+          className="relative mb-16 md:mb-24 px-4 md:px-12 lg:px-16 mt-8 md:mt-16 max-w-[1400px] mx-auto"
         >
           {/* Timeline */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20" />
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/0 via-primary to-primary/0" />
 
           {/* Arboleda los encinos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center justify-center relative">
-            <div className="w-full md:w-[90%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center justify-center relative">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+            <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
               <ButtonTextCard
                 title="arboleda los encinos"
-                text="Arboleda Los Encinos, gestionado por Cubika, es un proyecto inmobiliario que ofrece viviendas sostenibles y accesibles, ideales para quienes sueñan con su primera casa. Ubicado en un entorno natural en Chinautla, Guatemala, el proyecto combina modernidad y respeto por el medio ambiente."
+                text="Arboleda Los Encinos, gestionado por Cubika, es un proyecto inmobiliario que ofrece viviendas sostenibles y accesibles. Ubicado en un entorno natural en Chinautla, Guatemala."
                 buttonText="Descubre Arboleda"
                 buttonLink="https://www.arboledalosencinos.com.gt/"
               />
             </div>
             <motion.div 
-              className="overflow-hidden rounded-3xl w-full md:w-[90%] order-2 md:order-2"
-              whileHover={{ scale: 1.05 }}
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <Image
                 src={brand1}
-                alt="brand"
-                className="w-full aspect-[4/3] object-cover rounded-3xl"
+                alt="Arboleda los Encinos"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </div>
 
           {/* JYL */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center justify-center relative mt-16 md:mt-32">
-            <div className="w-full md:w-[90%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center justify-center relative mt-16 md:mt-24">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+            <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
               <ButtonTextCard
                 title="Jyl"
-                text="J&L, S.A. es una empresa de la corporación Cubika Inmobiliaria, S.A., especializada en la administración y manejo de ornato en proyectos habitacionales, nos enfocamos en ofrecer mecanismos eficientes en los complejos habitacionales, velamos por los intereses y el bien común de los propietarios."
+                text="J&L, S.A. es una empresa especializada en la administración y manejo de ornato en proyectos habitacionales. Nos enfocamos en ofrecer mecanismos eficientes y velar por el bien común."
                 buttonText="Conoce JYL"
                 buttonLink="https://jylservicios.com/"
               />
             </div>
             <motion.div 
-              className="overflow-hidden rounded-3xl w-full md:w-[90%] order-2 md:order-1"
-              whileHover={{ scale: 1.05 }}
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <Image
                 src={brand2}
-                alt="brand"
-                className="w-full aspect-[4/3] object-cover rounded-3xl"
+                alt="JYL Servicios"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </div>
 
           {/* Prados de minerva */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center justify-center relative mt-16 md:mt-32">
-            <div className="w-full md:w-[90%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center justify-center relative mt-16 md:mt-24">
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
+            <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
               <ButtonTextCard
                 title="Prados de Minerva"
-                text="Prados de Minerva es un proyecto residencial que ofrece casas con diseños modernos y funcionales. Ubicado en una zona estratégica, este desarrollo combina comodidad y accesibilidad, creando un espacio ideal para familias que buscan un hogar con excelente calidad de vida."
+                text="Prados de Minerva es un proyecto residencial que ofrece casas con diseños modernos y funcionales. Un espacio ideal para familias que buscan su primer hogar con excelente calidad de vida."
                 buttonText="Explora Prados"
                 buttonLink="/prados"
               />
             </div>
             <motion.div 
-              className="overflow-hidden rounded-3xl w-full md:w-[90%] order-2 md:order-2"
-              whileHover={{ scale: 1.05 }}
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <Image
                 src={brand3}
-                alt="brand"
-                className="w-full aspect-[4/3] object-cover rounded-3xl"
+                alt="Prados de Minerva"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </div>

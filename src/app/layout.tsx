@@ -1,12 +1,11 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import AuthProvider from '@/components/AuthProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Cubika',
-  description: 'Transformando terrenos en hogares sostenibles',
+  description: 'Desarrolladora inmobiliaria',
 };
 
 export default function RootLayout({
@@ -17,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
-        <AuthProvider>{children}</AuthProvider>
+        {children}
       </body>
     </html>
   );

@@ -112,9 +112,9 @@ export default function Team() {
               ease: [0.22, 1, 0.36, 1]
             }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center justify-center relative"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -123,11 +123,11 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="w-full md:w-[98%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-1"
+              className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-1"
             >
               <ButtonTextCard 
                 title="área administrativa"
-                text="El equipo administrativo constituye la columna vertebral de Cubika. Con una gestión precisa de recursos, procesos y documentación, garantizamos que cada proyecto alcance la excelencia, cumpliendo rigurosamente con los estándares de calidad y normativas establecidas."
+                text="El equipo administrativo constituye la columna vertebral de Cubika. Con una gestión precisa de recursos, procesos y documentación, garantizamos que cada proyecto alcance la excelencia."
                 showButton={false}
               />
             </motion.div>
@@ -139,13 +139,13 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="relative w-full md:w-[98%] h-[600px] rounded-[30px] overflow-hidden order-2 md:order-2 justify-self-end"
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 justify-self-end shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image
                 src={team4}
                 alt="Equipo Administrativo Cubika"
                 fill
-                className="object-cover"
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </motion.div>
@@ -159,9 +159,9 @@ export default function Team() {
               ease: [0.22, 1, 0.36, 1]
             }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center justify-center relative mt-20 md:mt-40"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -170,13 +170,13 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="relative w-full md:w-[98%] h-[500px] rounded-[30px] overflow-hidden order-1 md:order-1"
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-1 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image
                 src={team2}
                 alt="Equipo de Ventas Cubika"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
@@ -188,11 +188,11 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="w-full md:w-[98%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-2 md:order-2"
+              className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-2 md:order-2"
             >
               <ButtonTextCard
                 title="Área comercial"
-                text="Profesionales apasionados conforman el equipo comercial, dedicados a materializar los sueños de cada cliente. La experiencia en el mercado inmobiliario permite brindar una asesoría estratégica para encontrar la propiedad perfecta, adaptada a necesidades específicas y presupuestos diversos."
+                text="Profesionales apasionados conforman el equipo comercial, dedicados a materializar los sueños de cada cliente. La experiencia en el mercado inmobiliario permite brindar una asesoría estratégica."
                 showButton={false}
               />
             </motion.div>
@@ -207,9 +207,9 @@ export default function Team() {
               ease: [0.22, 1, 0.36, 1]
             }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center justify-center relative mt-20 md:mt-40"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -218,11 +218,11 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="w-full md:w-[98%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-1"
+              className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-1"
             >
               <ButtonTextCard
                 title="área de operación"
-                text="La supervisión y ejecución de proyectos inmobiliarios recae en el equipo de operaciones. Cada desarrollo se gestiona bajo estrictos estándares de calidad, implementando cronogramas efectivos y manteniendo una sólida comunicación entre todas las partes involucradas."
+                text="La supervisión y ejecución de proyectos inmobiliarios recae en el equipo de operaciones. Cada desarrollo se gestiona bajo estrictos estándares de calidad, implementando cronogramas efectivos."
                 showButton={false}
               />
             </motion.div>
@@ -234,13 +234,13 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="relative w-full md:w-[98%] h-[600px] rounded-[30px] overflow-hidden order-2 md:order-2"
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image
                 src={areaOperacion}
                 alt="Equipo de Servicio Cubika"
                 fill
-                className="object-cover"
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </motion.div>
@@ -254,9 +254,9 @@ export default function Team() {
               ease: [0.22, 1, 0.36, 1]
             }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center justify-center relative mt-20 md:mt-40"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full -z-[5]" />
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5]" />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -265,11 +265,11 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="w-full md:w-[98%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-2"
+              className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-2"
             >
               <ButtonTextCard
                 title="área de servicio"
-                text="Un equipo dedicado a mantener impecables los espacios y garantizar un ambiente acogedor. La atención al detalle en limpieza, mantenimiento y presentación de las instalaciones refleja el compromiso con la excelencia y el bienestar de quienes nos visitan."
+                text="Un equipo dedicado a mantener impecables los espacios y garantizar un ambiente acogedor. La atención al detalle en limpieza, mantenimiento y presentación refleja nuestro compromiso con la excelencia."
                 showButton={false}
               />
             </motion.div>
@@ -281,13 +281,13 @@ export default function Team() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               viewport={{ once: true }}
-              className="relative w-full md:w-[98%] h-[600px] rounded-[30px] overflow-hidden order-2 md:order-1"
+              className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image
                 src={areaServicio}
                 alt="Equipo de Operación Cubika"
                 fill
-                className="object-cover"
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </motion.div>
