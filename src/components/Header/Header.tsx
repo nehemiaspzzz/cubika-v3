@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logoCubika from "../../../public/images/logo_cubika.png";
+import logoCubika from "../../../public/images/logo-cubika.png";
 import { PrimaryButton } from "../Buttons/PrimaryButton";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -42,8 +42,10 @@ export const Header = () => {
                     <Link href="/home" className="relative z-[100] block p-2">
                         <Image
                             src={logoCubika}
-                            alt="Logo Cubika"
-                            className="w-40 md:w-40 lg:w-48 brightness-0 invert"
+                            alt="Cubika"
+                            width={200}
+                            height={50}
+                            className="w-48 md:w-52 lg:w-56"
                             priority
                         />
                     </Link>
