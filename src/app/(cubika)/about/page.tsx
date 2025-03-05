@@ -105,22 +105,63 @@ export default function About() {
             >
                 <div className="h-2 md:h-8" />
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{
-                        duration: 1,
-                        ease: [0.22, 1, 0.36, 1]
-                    }}
-                    viewport={{ once: true }}
-                >
-                    <Hero
+                <div className="mt-2 md:mt-8 relative">
+                    <Hero 
                         title="Nuestra Evolución"
                         subtitle="A través del tiempo"
-                        heroImage="bg-brands-hero "
+                        heroImage="bg-brands-hero"
                         needBackground={false}
+                        overlay={
+                            <motion.div 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.6 }}
+                                className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-[#CE9659]/30"
+                            >
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ 
+                                        duration: 0.8,
+                                        ease: [0.22, 1, 0.36, 1]
+                                    }}
+                                    className="flex flex-col items-center justify-center h-full text-center"
+                                >
+                                    <motion.h1
+                                        initial={{ opacity: 0, y: 50 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ 
+                                            duration: 0.8,
+                                            ease: [0.22, 1, 0.36, 1],
+                                            delay: 0.4
+                                        }}
+                                        className="text-6xl font-bold text-white uppercase drop-shadow-lg"
+                                    >
+                                        Nuestra Evolución
+                                    </motion.h1>
+                                    <motion.div 
+                                        initial={{ width: 0 }}
+                                        animate={{ width: "25%" }}
+                                        transition={{ duration: 0.7, delay: 0.6 }}
+                                        className="h-px bg-white my-4 opacity-40"
+                                    />
+                                    <motion.h2
+                                        initial={{ opacity: 0, y: -20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ 
+                                            duration: 0.8,
+                                            ease: [0.22, 1, 0.36, 1],
+                                            delay: 0.8
+                                        }}
+                                        className="text-4xl font-bold text-white uppercase"
+                                    >
+                                        A través del tiempo
+                                    </motion.h2>
+                                </motion.div>
+                            </motion.div>
+                        }
                     />
-                </motion.div>
+                </div>
 
                 <motion.section
                     variants={containerVariants}
@@ -384,10 +425,10 @@ export default function About() {
                             viewport={{ once: true }}
                             className="text-center my-4 font-extralight text-[#767676] mt-8 transition-all duration-300 ease-in-out hover:scale-105 transform-gpu"
                         >
-                            La construcción de nuestra marca en Cubika se inspira en la grandeza del Coliseo romano, símbolo de fortaleza y diseño. Al igual que este ícono, nuestra marca se edifica sobre principios de innovación y sostenibilidad. El símbolo de las personas sosteniendo la arquitectura refleja el valor de nuestro equipo humano, donde el trabajo unido es clave para lograr proyectos exitosos y duraderos.
+                            La construcción de nuestra marca en Cubika se inspira en la grandeza del Coliseo Romano, símbolo de fortaleza y diseño. Al igual que este ícono, nuestra marca se edifica sobre principios de innovación y sostenibilidad. El símbolo de las personas sosteniendo la arquitectura refleja el valor de nuestro equipo humano, donde el trabajo unido es clave para lograr proyectos exitosos y duraderos.
                         </motion.p>
                     </div>
-                    <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-2 mb-24">
+                    <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 mb-24 w-[98%] mx-auto">
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
@@ -396,12 +437,12 @@ export default function About() {
                                 ease: [0.22, 1, 0.36, 1]
                             }}
                             viewport={{ once: true }}
-                            className="w-[220px] md:w-auto"
+                            className="w-[250px] md:w-[280px]"
                         >
                             <Image
                                 src={brand1}
                                 alt="Brand 1"
-                                className="w-[220px] h-[260px] rounded-3xl -rotate-6 shadow-2xl z-10 transition-transform duration-300 hover:scale-105 hover:z-20 object-cover"
+                                className="w-[250px] md:w-[280px] h-[280px] rounded-3xl rotate-6 shadow-2xl z-10 transition-all duration-300 hover:scale-105 hover:z-20 object-cover"
                             />
                         </motion.div>
                         <motion.div
@@ -412,12 +453,12 @@ export default function About() {
                                 ease: [0.22, 1, 0.36, 1]
                             }}
                             viewport={{ once: true }}
-                            className="w-[220px] md:w-auto"
+                            className="w-[250px] md:w-[280px]"
                         >
                             <Image
                                 src={brand2}
                                 alt="Brand 2"
-                                className="w-[220px] h-[260px] rounded-3xl rotate-6 shadow-2xl transition-transform duration-300 hover:scale-105 hover:z-20 object-cover"
+                                className="w-[250px] md:w-[280px] h-[280px] rounded-3xl -rotate-12 shadow-2xl transition-all duration-300 hover:scale-105 hover:z-20 object-cover"
                             />
                         </motion.div>
                         <motion.div
@@ -428,12 +469,12 @@ export default function About() {
                                 ease: [0.22, 1, 0.36, 1]
                             }}
                             viewport={{ once: true }}
-                            className="w-[220px] md:w-auto"
+                            className="w-[250px] md:w-[280px]"
                         >
                             <Image
                                 src={brand3}
                                 alt="Brand 3"
-                                className="w-[220px] h-[260px] rounded-3xl -rotate-3 shadow-2xl transition-transform duration-300 hover:scale-105 hover:z-20 object-cover"
+                                className="w-[250px] md:w-[280px] h-[280px] rounded-3xl rotate-12 shadow-2xl transition-all duration-300 hover:scale-105 hover:z-20 object-cover"
                             />
                         </motion.div>
                         <motion.div
@@ -444,12 +485,12 @@ export default function About() {
                                 ease: [0.22, 1, 0.36, 1]
                             }}
                             viewport={{ once: true }}
-                            className="w-[220px] md:w-auto"
+                            className="w-[250px] md:w-[280px]"
                         >
                             <Image
                                 src={brand4}
                                 alt="Brand 4"
-                                className="w-[220px] h-[260px] rounded-3xl -rotate-12 shadow-2xl transition-transform duration-300 hover:scale-105 hover:z-20 object-cover"
+                                className="w-[250px] md:w-[280px] h-[280px] rounded-3xl -rotate-3 shadow-2xl transition-all duration-300 hover:scale-105 hover:z-20 object-cover"
                             />
                         </motion.div>
                     </div>

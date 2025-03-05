@@ -1,39 +1,35 @@
 
     const experiences = [
     {
-      title: "Cubika",
-      company_name: "Cubika",
-      date: "February 2021 - Presente",
+      title: " El Nacimiento de Grupo Cubika",
+      company_name: "Grupo Cubika",
+      date: "February 2022",
       points: [
-        "Trabajando en el proyecto de la startup que se dedica a la creación de aplicaciones web.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+        "Surge con una visión clara: transformar tierras en hogares y sueños en realidad. Como una corporación 100% guatemalteca, su misión es diseñar proyectos inmobiliarios innovadores que combinen funcionalidad, estética y calidad de vida.",
       ],
     },
     {
       title: "Prados de Minerva",
-      company_name: "Cubika",
-      date: "Nov 2021 - Actualidad",
+      company_name: "Prados de Minerva",
+      date: "Nov 2022",
       points: [
-        "Desarrollando nuevas funcionalidades en la plataforma de gestión de inventario.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+        "Con el compromiso de crear espacios excepcionales, se desarrolla Prados de Minerva, un residencial donde el diseño contemporáneo y la vida familiar se fusionan a la perfección. Cada espacio ha sido cuidadosamente pensado para brindar una experiencia de vida única.",
       ],
     },
     {
       title: "Arboleda Los Encinos",
-      company_name: "Cubika",
-      date: "July 2022 - Actualidad",
+      company_name: "Arboleda Los Encinos",
+      date: "Nov 2023",
       points: [
-        "Desarrollando nuevas funcionalidades en la plataforma de gestión de inventario.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+        "Siguiendo su filosofía de innovación, Cubika presenta Arboleda Los Encinos, un exclusivo desarrollo residencial donde la naturaleza y el lujo convergen en perfecta armonía. Más que viviendas, este proyecto redefine el arte de vivir, fusionando la serenidad del entorno con la sofisticación urbana.",
       ],
     },
     {
-      title: "J&L",
-      company_name: "Cubika",
-      date: "September 2024 - Present",
+      title: "J&L, la nueva frontera de Cubika",
+      company_name: "J&L",
+      date: "September 2023",
       points: [
-        "Desarrollando nuevas funcionalidades en la plataforma de gestión de inventario.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+        "Para garantizar una experiencia impecable, J&L asume la administración y mantenimiento de estos espacios, elevando la gestión residencial a un nuevo nivel. Su compromiso con la excelencia transforma cada comunidad en un lugar distinguido y bien organizado.",
       ],
     },
   ];
