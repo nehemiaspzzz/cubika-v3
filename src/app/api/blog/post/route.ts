@@ -13,7 +13,7 @@ interface BlogPost {
 }
 
 const ADMIN_PASSWORD = 'Cubika2025@.'; // Contraseña hardcodeada para pruebas
-const MAX_FILE_SIZE = 1024 * 1024; // 1MB en bytes
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB en bytes
 
 export async function POST(req: Request) {
   try {
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     // Validar tamaño de la imagen principal
     if (image && image.size > MAX_FILE_SIZE) {
       return NextResponse.json(
-        { error: 'La imagen principal no debe exceder 1MB' },
+        { error: 'La imagen principal no debe exceder 5MB' },
         { status: 400 }
       );
     }
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
     for (const additionalImage of additionalImages) {
       if (additionalImage.size > MAX_FILE_SIZE) {
         return NextResponse.json(
-          { error: 'Las imágenes adicionales no deben exceder 1MB cada una' },
+          { error: 'Las imágenes adicionales no deben exceder 5MB cada una' },
           { status: 400 }
         );
       }
