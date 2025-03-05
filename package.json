@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compress-images": "node scripts/compressImages.js",
+    "find-unused-images": "node scripts/findUnusedImages.js"
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
@@ -26,7 +28,8 @@
     "react-quill": "^2.0.0",
     "react-vertical-timeline-component": "^3.5.3",
     "resend": "^4.1.1",
-    "uuid": "^11.0.5"
+    "uuid": "^11.0.5",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
