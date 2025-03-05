@@ -108,6 +108,8 @@ export default function Home() {
       <motion.div
         className="rounded-b-3xl h-screen relative"
         {...animations.fadeIn}
+        role="banner"
+        aria-label="Carrusel principal de Cubika"
       >
         <Carousel
           loop
@@ -117,10 +119,13 @@ export default function Home() {
           onPointerLeaveCapture={() => { }}
           className="rounded-b-xl w-full"
           navigation={({ setActiveIndex, activeIndex, length }) => (
-            <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+            <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2" role="tablist">
               {new Array(length).fill("").map((_, i) => (
                 <span
                   key={i}
+                  role="tab"
+                  aria-selected={activeIndex === i}
+                  aria-label={`Slide ${i + 1}`}
                   className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
                     }`}
                   onClick={() => setActiveIndex(i)}
@@ -167,13 +172,16 @@ export default function Home() {
         }}
         id="quienes-somos"
         className="flex flex-col items-center justify-center mt-8"
+        role="region"
+        aria-labelledby="quienes-somos-title"
       >
-        <motion.h2
+        <motion.h1
           variants={animations.fadeIn}
           className="text-2xl font-bold uppercase text-center"
+          id="quienes-somos-title"
         >
           Somos Cubika
-        </motion.h2>
+        </motion.h1>
         <motion.div
           variants={animations.fadeIn}
           className="w-[310px] h-[3px] bg-primary my-4"
@@ -262,18 +270,15 @@ export default function Home() {
         }}
         id="propuesta"
         className="flex flex-col items-center justify-center mt-10"
+        role="region"
+        aria-labelledby="portafolio-title"
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          variants={sectionVariants}
-          className="w-[310px] h-[3px] bg-secondary my-4"
-        />
         <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           variants={sectionVariants}
           className="text-center text-4xl sm:text-5xl font-extrabold uppercase mb-8 px-4"
+          id="portafolio-title"
         >
           Portafolio
         </motion.h2>
@@ -325,17 +330,16 @@ export default function Home() {
         }}
         id="principios"
         className="flex flex-col md:flex-row w-full items-center justify-center mt-8"
+        role="region"
+        aria-labelledby="principios-title"
       >
         <div className="flex flex-col w-full md:w-[60%] items-center justify-center px-4 md:px-8 mt-8 md:mt-0">
-          <motion.div
-            variants={animations.fadeIn}
-            className="w-[310px] h-[3px] bg-primary my-4"
-          />
           <motion.h2
             variants={animations.fadeIn}
             className="text-center text-3xl font-bold uppercase mb-8"
+            id="principios-title"
           >
-            Principios que nos <br /> guían
+            Principios que nos guían
           </motion.h2>
           <motion.div
             variants={animations.fadeIn}
@@ -414,7 +418,6 @@ export default function Home() {
         </motion.div>
       </motion.section>
       <motion.div
-        variants={animations.fadeIn}
         className="block md:hidden w-full flex justify-center mt-8 mb-8"
       >
         <Image
@@ -436,15 +439,14 @@ export default function Home() {
         }}
         id="news"
         className="mx-4 lg:mx-14 py-12 bg-gray-50 rounded-3xl"
+        role="region"
+        aria-labelledby="news-title"
       >
         <div className="flex flex-col items-center justify-center mb-8">
-          <motion.div
-            variants={animations.fadeIn}
-            className="w-[310px] h-[3px] bg-primary my-4"
-          />
           <motion.h2
             variants={animations.fadeIn}
             className="text-center text-3xl lg:text-4xl font-bold uppercase mb-3"
+            id="news-title"
           >
             Últimas novedades
           </motion.h2>
