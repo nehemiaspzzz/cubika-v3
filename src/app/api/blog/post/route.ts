@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { v2 as cloudinary } from 'cloudinary';
 
 interface BlogPost {
   id: number;
@@ -14,6 +15,31 @@ interface BlogPost {
 
 const ADMIN_PASSWORD = 'Cubika2025@.'; // Contraseña hardcodeada para pruebas
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB en bytes
+
+// Configurar Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Función para subir imagen a Cloudinary
+async function uploadToCloudinary(file: File) {
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+  
+  // Convertir el buffer a base64
+  const base64Data = buffer.toString('base64');
+  const fileType = file.type;
+  const base64File = `data:${fileType};base64,${base64Data}`;
+  
+  // Subir a Cloudinary
+  const result = await cloudinary.uploader.upload(base64File, {
+    folder: 'blog-posts',
+  });
+  
+  return result.secure_url;
+}
 
 export async function POST(req: Request) {
   try {
@@ -77,37 +103,14 @@ export async function POST(req: Request) {
 
     // Manejar la imagen principal si existe
     if (image) {
-      const imageDir = path.join(process.cwd(), 'public', 'blog-images');
-      if (!fs.existsSync(imageDir)) {
-        fs.mkdirSync(imageDir, { recursive: true });
-      }
-
-      const bytes = await image.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      const filename = `${post.id}-main-${image.name}`;
-      const imagePath = path.join(imageDir, filename);
-      fs.writeFileSync(imagePath, buffer);
-      post.image = `/blog-images/${filename}`;
+      post.image = await uploadToCloudinary(image);
     }
 
     // Manejar imágenes adicionales si existen
     if (additionalImages.length > 0) {
-      const imageDir = path.join(process.cwd(), 'public', 'blog-images');
-      if (!fs.existsSync(imageDir)) {
-        fs.mkdirSync(imageDir, { recursive: true });
-      }
-
-      post.additionalImages = [];
-
-      for (let i = 0; i < additionalImages.length; i++) {
-        const additionalImage = additionalImages[i];
-        const bytes = await additionalImage.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-        const filename = `${post.id}-additional-${i}-${additionalImage.name}`;
-        const imagePath = path.join(imageDir, filename);
-        fs.writeFileSync(imagePath, buffer);
-        post.additionalImages.push(`/blog-images/${filename}`);
-      }
+      post.additionalImages = await Promise.all(
+        additionalImages.map(img => uploadToCloudinary(img))
+      );
     }
 
     // Leer posts existentes o crear array vacío

@@ -16,6 +16,7 @@
     "@types/react-vertical-timeline-component": "^3.3.6",
     "@types/uuid": "^10.0.0",
     "@vis.gl/react-google-maps": "^1.5.0",
+    "cloudinary": "^2.5.1",
     "framer-motion": "^12.0.1",
     "mongodb": "^6.12.0",
     "mongoose": "^8.9.5",
@@ -28,8 +29,8 @@
     "react-quill": "^2.0.0",
     "react-vertical-timeline-component": "^3.5.3",
     "resend": "^4.1.1",
-    "uuid": "^11.0.5",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.2",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
