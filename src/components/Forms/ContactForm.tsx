@@ -41,6 +41,8 @@ export default function ContactForm() {
         cv: null as File | null
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -76,6 +78,17 @@ export default function ContactForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setSubmitStatus('idle');
+        setErrorMessage('');
+        
+        // Establecer un timeout para evitar que se quede cargando indefinidamente
+        const timeoutId = setTimeout(() => {
+            if (isSubmitting) {
+                setIsSubmitting(false);
+                setSubmitStatus('error');
+                setErrorMessage('La solicitud ha tardado demasiado tiempo. Por favor, inténtalo de nuevo.');
+            }
+        }, 15000); // 15 segundos de timeout
         
         try {
             const formDataToSend = new FormData();
@@ -83,24 +96,34 @@ export default function ContactForm() {
             formDataToSend.append('nombres', formData.nombres);
             formDataToSend.append('apellidos', formData.apellidos);
             formDataToSend.append('email', formData.email);
-            formDataToSend.append('telefono', formData.telefono);
-            formDataToSend.append('empresa', formData.empresa);
+            formDataToSend.append('telefono', formData.telefono || '');
+            formDataToSend.append('empresa', formData.empresa || '');
             formDataToSend.append('mensaje', formData.mensaje);
             
             if (formData.cv) {
                 formDataToSend.append('cv', formData.cv);
             }
 
+            console.log('Enviando formulario...');
+            
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 body: formDataToSend,
             });
 
+            // Limpiar el timeout ya que recibimos respuesta
+            clearTimeout(timeoutId);
+
+            const result = await response.json();
+            console.log('Respuesta del servidor:', result);
+
             if (!response.ok) {
-                throw new Error('Error al enviar el mensaje');
+                throw new Error(result.error || result.message || 'Error al enviar el mensaje');
             }
 
-            alert('Mensaje enviado exitosamente');
+            setSubmitStatus('success');
+            
+            // Limpiar el formulario
             setFormData({
                 nombres: '',
                 apellidos: '',
@@ -111,9 +134,13 @@ export default function ContactForm() {
                 cv: null
             });
             
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error al enviar el mensaje');
+        } catch (error: any) {
+            // Limpiar el timeout en caso de error
+            clearTimeout(timeoutId);
+            
+            console.error('Error en el envío del formulario:', error);
+            setSubmitStatus('error');
+            setErrorMessage(error.message || 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
         } finally {
             setIsSubmitting(false);
         }
@@ -126,6 +153,20 @@ export default function ContactForm() {
             transition={{ duration: 0.5 }}
             className="w-full max-w-2xl mx-auto"
         >
+            {submitStatus === 'success' && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+                    <p className="font-medium">¡Mensaje enviado con éxito!</p>
+                    <p>Gracias por contactarnos. Te responderemos lo antes posible.</p>
+                </div>
+            )}
+            
+            {submitStatus === 'error' && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+                    <p className="font-medium">Error al enviar el mensaje</p>
+                    <p>{errorMessage}</p>
+                </div>
+            )}
+            
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Selector de tipo de formulario */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -284,21 +325,20 @@ export default function ContactForm() {
                         </motion.div>
                     )}
 
-                    <motion.div 
-                        className="flex justify-center md:justify-start"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
+                    <div className="flex justify-center mt-8">
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className={`w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition-colors ${
-                                isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                            }`}
+                            className={`
+                                bg-primary text-white px-8 py-3 text-lg rounded-md 
+                                hover:bg-primary/80 
+                                transition-all duration-200
+                                ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}
+                            `}
                         >
                             {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                         </button>
-                    </motion.div>
+                    </div>
                 </div>
             </form>
         </motion.div>

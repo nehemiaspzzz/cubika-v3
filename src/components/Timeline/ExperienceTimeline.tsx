@@ -13,86 +13,78 @@ interface ExperienceProps {
 }
 
 const getTimelineColors = (title: string): { bg: string, shadow: string } => {
-  if (title.toLowerCase().includes('cubika')) {
-    return {
-      bg: '#91472d',
-      shadow: 'rgba(145, 71, 45, 0.3)'
-    };
-  }
-  if (title.toLowerCase().includes('prados')) {
-    return {
-      bg: '#1d324d',
-      shadow: 'rgba(29, 50, 77, 0.3)'
-    };
-  }
-  if (title.toLowerCase().includes('arboleda')) {
-    return {
-      bg: '#153832',
-      shadow: 'rgba(21, 56, 50, 0.3)'
-    };
-  }
-  // Para J&L
+  // Usar el mismo color para todos los círculos (el color de Cubika)
   return {
-    bg: '#CE9659',
-    shadow: 'rgba(206, 150, 89, 0.3)'
+    bg: '#91472d',
+    shadow: 'rgba(145, 71, 45, 0.3)'
   };
 }
 
-const getLogo = (title: string): string => {
-  if (title.toLowerCase().includes('cubika')) return 'cubika-logo.png';
-  if (title.toLowerCase().includes('prados')) return 'prados-logo.png';
-  if (title.toLowerCase().includes('arboleda')) return 'arboleda-logo.png';
-  return 'logo-jyl.png'; // Simplificamos esta función ya que por defecto será J&L
-}
-
-const ExperienceCard = ({ experience }: { experience: ExperienceProps }) => {
+const ExperienceCard = ({ experience, index, total }: { experience: ExperienceProps, index: number, total: number }) => {
   const colors = getTimelineColors(experience.title);
-  const logo = getLogo(experience.title);
+  
+  const logos = [
+    'cubika-logo.png',
+    'prados-logo.png',
+    'arboleda-logo.png',
+    'logo-jyl.png'
+  ];
+  
+  const logoSrc = logos[index];
+  const isArboleda = logoSrc === 'arboleda-logo.png';
   
   return (
     <VerticalTimelineElement
       className="vertical-timeline-element--work group"
       contentStyle={{
-        background: 'linear-gradient(to right bottom, #ffffff, #f8f9fa)',
+        background: 'linear-gradient(135deg, #ffffff, #f8f9fa)',
         color: '#1d1836',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        borderRadius: '16px',
-        padding: '2rem',
+        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05)',
+        borderRadius: '24px',
+        padding: '2.5rem',
+        border: '1px solid rgba(145, 71, 45, 0.1)',
+        transition: 'all 0.3s ease',
       }}
       contentArrowStyle={{
-        borderRight: '10px solid #f8f9fa'
+        borderRight: '12px solid #f8f9fa',
+        filter: 'drop-shadow(-3px 2px 2px rgba(0, 0, 0, 0.1))'
       }}
       date={experience.date}
-      dateClassName="text-gray-600 font-medium md:text-lg"
+      dateClassName="text-gray-600 font-semibold md:text-lg tracking-wide"
       iconStyle={{
         background: colors.bg,
         color: '#fff',
-        boxShadow: `0 4px 6px -1px ${colors.shadow}`,
+        boxShadow: `0 8px 16px -4px ${colors.shadow}`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2px',
+        padding: isArboleda ? '0' : '2px',
+        width: isArboleda ? '70px' : '60px',
+        height: isArboleda ? '70px' : '60px',
+        marginLeft: isArboleda ? '-35px' : '-30px',
+        border: '3px solid #fff',
+        transition: 'all 0.3s ease',
       }}
       icon={
-        <div className="w-[90%] h-[90%] relative">
+        <div className="relative w-full h-full">
           <Image
-            src={`/images/${logo}`}
+            src={`/images/${logoSrc}`}
             alt={`${experience.title} logo`}
             fill
-            className="object-contain p-1"
+            className={`object-contain ${isArboleda ? 'scale-150' : 'p-1'}`}
           />
         </div>
       }
     >
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="group-hover:translate-y-[-5px] transition-all duration-300"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="group-hover:translate-y-[-8px] transition-all duration-500 ease-out"
       >
-        <div className="flex flex-col gap-2">
-          <h3 className="text-2xl md:text-3xl font-bold" style={{ color: colors.bg }}>
+        <div className="flex flex-col gap-5">
+          <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#91472d] to-[#b15e3d] bg-clip-text text-transparent">
             {experience.title}
           </h3>
           <p className="text-xl md:text-2xl font-medium text-gray-700">
@@ -100,26 +92,21 @@ const ExperienceCard = ({ experience }: { experience: ExperienceProps }) => {
           </p>
         </div>
         
-        <ul className="mt-6 space-y-4">
+        <div className="mt-8 space-y-7">
           {experience.points.map((point, index) => (
-            <motion.li
+            <motion.div
               key={`experience-point-${index}`}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex items-start gap-3 text-gray-600"
+              transition={{ duration: 0.5, delay: index * 0.15 }}
             >
-              <span 
-                className="inline-block w-2 h-2 mt-2 rounded-full" 
-                style={{ backgroundColor: `${colors.bg}80` }}
-              />
-              <span className="text-base md:text-lg leading-relaxed text-justify">
+              <p className="text-base md:text-lg leading-relaxed text-justify text-gray-600">
                 {point}
-              </span>
-            </motion.li>
+              </p>
+            </motion.div>
           ))}
-        </ul>
+        </div>
       </motion.div>
     </VerticalTimelineElement>
   )
@@ -127,15 +114,18 @@ const ExperienceCard = ({ experience }: { experience: ExperienceProps }) => {
 
 const ExperienceTimeline = ({ experiences }: { experiences: ExperienceProps[] }) => {
   return (
-    <div className="mt-20">
+    <div className="mt-24">
       <VerticalTimeline
         animate={true}
-        lineColor={'#CE9659'}
+        lineColor={'#91472d'}
+        className="before:w-[3px]"
       >
         {experiences.map((experience, index) => (
           <ExperienceCard 
             key={`experience-${index}`} 
-            experience={experience} 
+            experience={experience}
+            index={index}
+            total={experiences.length}
           />
         ))}
       </VerticalTimeline>
