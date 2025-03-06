@@ -1,5 +1,4 @@
-
-    const experiences = [
+const experiences = [
     {
       title: " El Origen de Grupo Cubika",
       date: "Febrero 2022",
@@ -22,6 +21,13 @@
       points: [
         "Comprometidos con ofrecer una experiencia residencial excepcional, J&L se especializa en la administración y mantenimiento de nuestros desarrollos. Como empresa dedicada al ornato y cuidado urbano, J&L se enfoca en la conservación y embellecimiento de cada comunidad a través de servicios de mantenimiento, jardinización y ordenamiento urbano, asegurando espacios armoniosos, bien organizados y sostenibles.",
        "Con un enfoque en la excelencia y la eficiencia, J&L transforma cada desarrollo en un entorno seguro y atractivo, garantizando el bienestar y la tranquilidad de sus residentes."
+      ],
+    },
+    {
+      title: "Modulé",
+      date: "Marzo 2024",
+      points: [
+        "Es una empresa que nace con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad. Nos especializamos en la fabricación e instalación de puertas, ventanas y muebles de cocina, asegurando altos estándares de calidad y precisión en cada proyecto."
       ],
     },
     {

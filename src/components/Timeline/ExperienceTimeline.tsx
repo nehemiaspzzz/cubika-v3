@@ -1,138 +1,128 @@
 "use client"
 import React from 'react'
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
-import 'react-vertical-timeline-component/style.min.css'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
+// Definición de tipos para las propiedades de experiencia
 interface ExperienceProps {
-    title: string;
-    company_name: string;
-    date: string;
-    points: string[];
+  title: string;
+  company_name: string;
+  date: string;
+  points: string[];
 }
 
-const getTimelineColors = (title: string): { bg: string, shadow: string } => {
-  // Usar el mismo color para todos los círculos (el color de Cubika)
-  return {
-    bg: '#91472d',
-    shadow: 'rgba(145, 71, 45, 0.3)'
-  };
-}
-
-const ExperienceCard = ({ experience, index, total }: { experience: ExperienceProps, index: number, total: number }) => {
-  const colors = getTimelineColors(experience.title);
-  
+// Componente principal del timeline
+const ExperienceTimeline = ({ experiences }: { experiences: ExperienceProps[] }) => {
+  // Mapeo de logos para cada experiencia
   const logos = [
     'cubika-logo.png',
     'prados-logo.png',
     'arboleda-logo.png',
+    'logo-module.png',
     'logo-jyl.png'
   ];
-  
-  const logoSrc = logos[index];
-  const isArboleda = logoSrc === 'arboleda-logo.png';
-  const isPrados = logoSrc === 'prados-logo.png';
-  const needsSpecialTreatment = isArboleda || isPrados;
-  
-  return (
-    <VerticalTimelineElement
-      className="vertical-timeline-element--work group"
-      contentStyle={{
-        background: 'linear-gradient(135deg, #ffffff, #f8f9fa)',
-        color: '#1d1836',
-        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05)',
-        borderRadius: '24px',
-        padding: '2.5rem',
-        border: '1px solid rgba(145, 71, 45, 0.1)',
-        transition: 'all 0.3s ease',
-      }}
-      contentArrowStyle={{
-        borderRight: '12px solid #f8f9fa',
-        filter: 'drop-shadow(-3px 2px 2px rgba(0, 0, 0, 0.1))'
-      }}
-      date={experience.date}
-      dateClassName="text-gray-600 font-semibold md:text-lg tracking-wide"
-      iconStyle={{
-        background: colors.bg,
-        color: '#fff',
-        boxShadow: `0 8px 16px -4px ${colors.shadow}`,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: needsSpecialTreatment ? '0' : '2px',
-        width: needsSpecialTreatment ? '70px' : '60px',
-        height: needsSpecialTreatment ? '70px' : '60px',
-        marginLeft: needsSpecialTreatment ? '-35px' : '-30px',
-        border: '3px solid #fff',
-        transition: 'all 0.3s ease',
-      }}
-      icon={
-        <div className="relative w-full h-full">
-          <Image
-            src={`/images/${logoSrc}`}
-            alt={`${experience.title} logo`}
-            fill
-            className={`object-contain ${needsSpecialTreatment ? 'scale-150' : 'p-1'}`}
-          />
-        </div>
-      }
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="group-hover:translate-y-[-8px] transition-all duration-500 ease-out"
-      >
-        <div className="flex flex-col gap-5">
-          <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#91472d] to-[#b15e3d] bg-clip-text text-transparent">
-            {experience.title}
-          </h3>
-          <p className="text-xl md:text-2xl font-medium text-gray-700">
-            {experience.company_name}
-          </p>
-        </div>
-        
-        <div className="mt-8 space-y-7">
-          {experience.points.map((point, index) => (
-            <motion.div
-              key={`experience-point-${index}`}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-            >
-              <p className="text-base md:text-lg leading-relaxed text-justify text-gray-600">
-                {point}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </VerticalTimelineElement>
-  )
-}
 
-const ExperienceTimeline = ({ experiences }: { experiences: ExperienceProps[] }) => {
   return (
-    <div className="mt-24">
-      <VerticalTimeline
-        animate={true}
-        lineColor={'#91472d'}
-        className="before:w-[3px]"
-      >
+    <div className="container mx-auto px-4 py-16 relative">
+      {/* Línea vertical central */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-[#91472d]"></div>
+      
+      <div className="relative">
         {experiences.map((experience, index) => (
-          <ExperienceCard 
-            key={`experience-${index}`} 
+          <TimelineItem 
+            key={index}
             experience={experience}
-            index={index}
-            total={experiences.length}
+            logo={logos[index]}
+            isLeft={index % 2 === 0}
+            isFirst={index === 0}
+            isLast={index === experiences.length - 1}
           />
         ))}
-      </VerticalTimeline>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+// Componente para cada elemento del timeline
+const TimelineItem = ({ 
+  experience, 
+  logo, 
+  isLeft, 
+  isFirst, 
+  isLast 
+}: { 
+  experience: ExperienceProps; 
+  logo: string;
+  isLeft: boolean;
+  isFirst: boolean;
+  isLast: boolean;
+}) => {
+  // Determinar si el logo necesita un tratamiento especial (más grande)
+  const needsLargerLogo = logo === 'prados-logo.png' || logo === 'arboleda-logo.png' || logo === 'logo-module.png';
+  
+  return (
+    <div className="flex items-center mb-24 relative">
+      {/* Tarjeta de contenido - Izquierda o Derecha */}
+      <div className={`w-[45%] ${isLeft ? 'order-1 pr-8' : 'order-3 pl-8'}`}>
+        <motion.div
+          initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className={`bg-white rounded-xl shadow-lg p-8 ${isLeft ? 'ml-auto' : 'mr-auto'}`}
+        >
+          <div className="mb-6 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#91472d] to-[#b15e3d] bg-clip-text text-transparent">
+              {experience.title}
+            </h3>
+            {experience.company_name && (
+              <p className="text-xl font-medium text-gray-700 mt-2">
+                {experience.company_name}
+              </p>
+            )}
+            <div className="mt-3">
+              <span className="inline-block bg-[#91472d] text-white px-4 py-1 rounded-full text-sm font-semibold">
+                {experience.date}
+              </span>
+            </div>
+          </div>
+          
+          <div className="space-y-4">
+            {experience.points.map((point, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <p className="text-base md:text-lg text-gray-600 leading-relaxed text-justify">
+                  {point}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+      
+      {/* Círculo con logo - Centrado */}
+      <div className="w-[10%] order-2 flex justify-center">
+        <div className="w-32 h-32 rounded-full bg-[#91472d] border-4 border-white shadow-lg flex items-center justify-center z-10 relative">
+          <div className={`relative ${needsLargerLogo ? 'w-full h-full' : 'w-[75%] h-[75%]'}`}>
+            <Image
+              src={`/images/${logo}`}
+              alt={`${experience.title} logo`}
+              fill
+              className={`object-contain ${needsLargerLogo ? 'scale-125 p-0' : 'p-1'}`}
+            />
+          </div>
+        </div>
+      </div>
+      
+      {/* Espacio vacío para el lado opuesto */}
+      <div className={`w-[45%] ${isLeft ? 'order-3' : 'order-1'}`}></div>
+    </div>
+  );
+};
 
 export default ExperienceTimeline;
