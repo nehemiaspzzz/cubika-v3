@@ -1,23 +1,19 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { db } from '@/lib/firebase-admin';
 
 export async function GET() {
   try {
-    const dataDir = path.join(process.cwd(), 'data');
-    const postsPath = path.join(dataDir, 'blog-posts.json');
-
-    if (!fs.existsSync(postsPath)) {
-      return NextResponse.json([], { status: 200 });
-    }
-
-    const postsData = fs.readFileSync(postsPath, 'utf-8');
-    const posts = JSON.parse(postsData);
-
-    // Ordenar los posts por fecha de creación (más recientes primero)
-    posts.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-
-    return NextResponse.json(posts, { status: 200 });
+    // Obtener todos los posts de Firestore ordenados por fecha (más recientes primero)
+    const postsRef = db.collection('posts');
+    const postsSnapshot = await postsRef.orderBy('createdAt', 'desc').get();
+    
+    // Convertir los documentos a un array de posts
+    const posts = postsSnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    
+    return NextResponse.json(posts);
   } catch (error) {
     console.error('Error al obtener los posts:', error);
     return NextResponse.json(

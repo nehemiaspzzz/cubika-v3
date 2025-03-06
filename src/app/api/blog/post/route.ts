@@ -1,26 +1,38 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { db, storage } from '@/lib/firebase-admin';
+import { v4 as uuidv4 } from 'uuid';
 
 const ADMIN_PASSWORD = 'Cubika2025@.';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB en bytes
-const POSTS_DIR = path.join(process.cwd(), 'public', 'posts');
-const IMAGES_DIR = path.join(process.cwd(), 'public', 'images', 'blog');
 
-// Asegurar que los directorios existan
-if (!fs.existsSync(POSTS_DIR)) {
-  fs.mkdirSync(POSTS_DIR, { recursive: true });
-}
-if (!fs.existsSync(IMAGES_DIR)) {
-  fs.mkdirSync(IMAGES_DIR, { recursive: true });
-}
-
-async function saveImage(file: File, filename: string): Promise<string> {
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  const imagePath = path.join(IMAGES_DIR, filename);
-  fs.writeFileSync(imagePath, buffer);
-  return `/images/blog/${filename}`;
+async function uploadImageToFirebase(file: File, filename: string): Promise<string> {
+  try {
+    // Convertir el archivo a un buffer
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    
+    // Crear una referencia al archivo en Storage
+    const bucket = storage.bucket();
+    const fileRef = bucket.file(`blog-images/${filename}`);
+    
+    // Subir el archivo
+    await fileRef.save(buffer, {
+      metadata: {
+        contentType: file.type,
+      },
+    });
+    
+    // Hacer el archivo públicamente accesible
+    await fileRef.makePublic();
+    
+    // Obtener la URL pública
+    const publicUrl = `https://storage.googleapis.com/${bucket.name}/${fileRef.name}`;
+    
+    return publicUrl;
+  } catch (error) {
+    console.error('Error al subir la imagen:', error);
+    throw new Error('Error al subir la imagen');
+  }
 }
 
 export async function POST(req: Request) {
@@ -67,39 +79,53 @@ export async function POST(req: Request) {
       }
     }
 
-    const postId = Date.now().toString();
+    // Crear un objeto con los datos del post
     const postData: any = {
-      id: postId,
       title,
       content,
       template,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
 
+    // Subir la imagen principal si existe
     if (image) {
-      console.log('Guardando imagen principal...');
-      const filename = `${postId}-main-${image.name}`;
-      postData.image = await saveImage(image, filename);
-      console.log('Imagen principal guardada:', postData.image);
+      console.log('Subiendo imagen principal...');
+      const fileExtension = image.name.split('.').pop();
+      const filename = `${uuidv4()}.${fileExtension}`;
+      
+      // Subir la imagen a Firebase Storage
+      const imageUrl = await uploadImageToFirebase(image, filename);
+      
+      // Añadir la URL de la imagen a los datos del post
+      postData.imageUrl = imageUrl;
+      postData.imageName = filename;
+      console.log('Imagen principal subida:', postData.imageUrl);
     }
 
+    // Subir imágenes adicionales si existen
     if (additionalImages.length > 0) {
-      console.log('Guardando imágenes adicionales...');
+      console.log('Subiendo imágenes adicionales...');
       postData.additionalImages = await Promise.all(
         additionalImages.map(async (img, index) => {
-          const filename = `${postId}-${index}-${img.name}`;
-          return await saveImage(img, filename);
+          const fileExtension = img.name.split('.').pop();
+          const filename = `${uuidv4()}-${index}-${fileExtension}`;
+          return await uploadImageToFirebase(img, filename);
         })
       );
-      console.log('Imágenes adicionales guardadas:', postData.additionalImages);
+      console.log('Imágenes adicionales subidas:', postData.additionalImages);
     }
 
-    // Guardar el post en un archivo JSON
-    const postPath = path.join(POSTS_DIR, `${postId}.json`);
-    fs.writeFileSync(postPath, JSON.stringify(postData, null, 2));
-    console.log('Post guardado exitosamente:', postPath);
+    // Crear un nuevo documento en la colección 'posts'
+    const postRef = db.collection('posts').doc();
+    await postRef.set(postData);
+    console.log('Post guardado exitosamente con ID:', postRef.id);
 
-    return NextResponse.json({ success: true, post: postData });
+    // Devolver los datos del post creado
+    return NextResponse.json({
+      id: postRef.id,
+      ...postData
+    });
   } catch (error) {
     console.error('Error detallado al crear post:', error);
     if (error instanceof Error) {
@@ -135,38 +161,35 @@ export async function DELETE(req: Request) {
       );
     }
 
-    const postPath = path.join(POSTS_DIR, `${id}.json`);
+    // Obtener el post para verificar si tiene una imagen
+    const postRef = db.collection('posts').doc(id);
+    const postDoc = await postRef.get();
     
-    if (!fs.existsSync(postPath)) {
+    if (!postDoc.exists) {
       return NextResponse.json(
         { error: 'Post no encontrado' },
         { status: 404 }
       );
     }
-
-    // Leer el post para obtener las rutas de las imágenes
-    const postData = JSON.parse(fs.readFileSync(postPath, 'utf-8'));
-
-    // Eliminar la imagen principal si existe
-    if (postData.image) {
-      const imagePath = path.join(process.cwd(), 'public', postData.image);
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
+    
+    const postData = postDoc.data();
+    
+    // Eliminar la imagen de Firebase Storage si existe
+    if (postData?.imageUrl && postData?.imageName) {
+      const bucket = storage.bucket();
+      const fileRef = bucket.file(`blog-images/${postData.imageName}`);
+      
+      // Verificar si el archivo existe antes de eliminarlo
+      const [exists] = await fileRef.exists();
+      if (exists) {
+        await fileRef.delete();
+        console.log(`Imagen eliminada: ${postData.imageName}`);
       }
     }
-
-    // Eliminar las imágenes adicionales si existen
-    if (postData.additionalImages && postData.additionalImages.length > 0) {
-      postData.additionalImages.forEach((imageUrl: string) => {
-        const imagePath = path.join(process.cwd(), 'public', imageUrl);
-        if (fs.existsSync(imagePath)) {
-          fs.unlinkSync(imagePath);
-        }
-      });
-    }
-
-    // Eliminar el archivo JSON del post
-    fs.unlinkSync(postPath);
+    
+    // Eliminar el documento del post
+    await postRef.delete();
+    console.log(`Post eliminado: ${id}`);
 
     return NextResponse.json({ success: true });
   } catch (error) {

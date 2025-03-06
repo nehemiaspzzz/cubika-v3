@@ -32,6 +32,8 @@ const ExperienceCard = ({ experience, index, total }: { experience: ExperiencePr
   
   const logoSrc = logos[index];
   const isArboleda = logoSrc === 'arboleda-logo.png';
+  const isPrados = logoSrc === 'prados-logo.png';
+  const needsSpecialTreatment = isArboleda || isPrados;
   
   return (
     <VerticalTimelineElement
@@ -58,10 +60,10 @@ const ExperienceCard = ({ experience, index, total }: { experience: ExperiencePr
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: isArboleda ? '0' : '2px',
-        width: isArboleda ? '70px' : '60px',
-        height: isArboleda ? '70px' : '60px',
-        marginLeft: isArboleda ? '-35px' : '-30px',
+        padding: needsSpecialTreatment ? '0' : '2px',
+        width: needsSpecialTreatment ? '70px' : '60px',
+        height: needsSpecialTreatment ? '70px' : '60px',
+        marginLeft: needsSpecialTreatment ? '-35px' : '-30px',
         border: '3px solid #fff',
         transition: 'all 0.3s ease',
       }}
@@ -71,7 +73,7 @@ const ExperienceCard = ({ experience, index, total }: { experience: ExperiencePr
             src={`/images/${logoSrc}`}
             alt={`${experience.title} logo`}
             fill
-            className={`object-contain ${isArboleda ? 'scale-150' : 'p-1'}`}
+            className={`object-contain ${needsSpecialTreatment ? 'scale-150' : 'p-1'}`}
           />
         </div>
       }
