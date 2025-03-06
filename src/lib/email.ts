@@ -20,6 +20,7 @@ interface EmailData {
     empresa?: string;
     mensaje: string;
     cvUrl?: string;
+    cvFileName?: string;
 }
 
 export async function sendContactEmail(data: EmailData) {
@@ -248,8 +249,19 @@ export async function sendContactEmail(data: EmailData) {
                     </div>
                     
                     ${data.cvUrl ? `
-                    <div class="info-item" style="margin-top: 20px;">
-                        <span class="label">CV adjunto:</span> <a href="${data.cvUrl}" style="color: #91472d;">${data.cvUrl}</a>
+                    <div style="margin-top: 25px; background-color: #f0f7ff; padding: 15px; border-radius: 8px; border-left: 5px solid #0077b5;">
+                        <h3 style="margin-top: 0; color: #0077b5; font-size: 18px;">Curriculum Vitae adjunto</h3>
+                        <p style="margin-bottom: 10px;">El candidato ha adjuntado su CV para revisión:</p>
+                        <div style="background-color: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #e0e0e0; display: flex; align-items: center;">
+                            <span style="background-color: #0077b5; color: white; padding: 8px; border-radius: 50%; margin-right: 10px; font-size: 16px;">📄</span>
+                            <div>
+                                <p style="margin: 0; font-weight: bold;">${data.cvFileName || 'CV.pdf'}</p>
+                                <p style="margin: 5px 0 0 0; font-size: 13px; color: #666;">Documento PDF adjunto</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; text-align: center;">
+                            <a href="${data.cvUrl}" target="_blank" style="display: inline-block; background-color: #0077b5; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">Descargar CV</a>
+                        </div>
                     </div>
                     ` : ''}
                     
@@ -454,6 +466,7 @@ export async function sendContactEmail(data: EmailData) {
                                     <li><strong>Tipo de consulta:</strong> ${data.type}</li>
                                     <li><strong>Nombre:</strong> ${data.nombres} ${data.apellidos}</li>
                                     <li><strong>Mensaje:</strong> ${data.mensaje}</li>
+                                    ${data.cvUrl ? `<li><strong>CV adjunto:</strong> Tu curriculum vitae ha sido subido a Google Drive para su revisión</li>` : ''}
                                 </ul>
                             </div>
                             

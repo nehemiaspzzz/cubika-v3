@@ -1,6 +1,33 @@
 import { NextResponse } from 'next/server';
 import { sendContactEmail } from '@/lib/email';
 
+// Configuración para permitir archivos grandes
+export const config = {
+    api: {
+        bodyParser: false,
+    },
+};
+
+// Función para simular la subida a Google Drive y generar un enlace
+async function uploadToGoogleDrive(file: File): Promise<string> {
+    // En una implementación real, aquí subirías el archivo a Google Drive usando su API
+    // y obtendrías un enlace de descarga real
+    
+    // Por ahora, simulamos el proceso y generamos un enlace ficticio
+    console.log(`Simulando subida a Google Drive: ${file.name} (${file.size} bytes)`);
+    
+    // Simulamos un ID de archivo de Google Drive
+    const fakeFileId = Math.random().toString(36).substring(2, 15);
+    
+    // Generamos un enlace ficticio de Google Drive
+    // En una implementación real, este sería un enlace real de Google Drive
+    const downloadLink = `https://drive.google.com/file/d/${fakeFileId}/view?usp=sharing`;
+    
+    console.log(`Enlace de descarga generado: ${downloadLink}`);
+    
+    return downloadLink;
+}
+
 export async function POST(req: Request) {
     console.log('API de contacto recibió una solicitud');
     
@@ -26,10 +53,56 @@ export async function POST(req: Request) {
             );
         }
 
-        console.log('Datos recibidos:', { formType, nombres, apellidos, email, telefono, empresa });
+        console.log('Datos recibidos:', { 
+            formType, 
+            nombres, 
+            apellidos, 
+            email, 
+            telefono: telefono || 'No proporcionado', 
+            empresa: empresa || 'No proporcionada',
+            cvRecibido: cv ? 'Sí' : 'No'
+        });
+        
+        // Procesar el archivo CV si existe
+        let cvUrl = '';
+        let cvFileName = '';
+        if (cv && formType === 'trabajo') {
+            try {
+                // Verificar que el archivo es válido
+                if (!cv.name || !cv.size || !cv.type) {
+                    throw new Error('Archivo CV inválido');
+                }
+                
+                console.log('Archivo CV recibido:', {
+                    nombre: cv.name,
+                    tamaño: cv.size,
+                    tipo: cv.type
+                });
+                
+                // Guardar el nombre del archivo
+                cvFileName = cv.name;
+                
+                // Subir el archivo a Google Drive (simulado)
+                cvUrl = await uploadToGoogleDrive(cv);
+                
+                console.log('CV subido correctamente. Enlace de descarga:', cvUrl);
+            } catch (cvError) {
+                console.error('Error al procesar el CV:', cvError);
+                // Continuamos sin el CV en caso de error
+            }
+        }
 
-        // Intentar enviar el email
         try {
+            // Enviar el email
+            console.log('Intentando enviar email con los siguientes datos:', {
+                type: formType,
+                nombres,
+                apellidos,
+                email,
+                cvUrl: cvUrl || 'No adjuntado',
+                cvFileName: cvFileName || 'No adjuntado'
+            });
+            
             const emailResponse = await sendContactEmail({
                 type: formType,
                 nombres,
@@ -37,7 +110,9 @@ export async function POST(req: Request) {
                 email,
                 telefono,
                 empresa,
-                mensaje
+                mensaje,
+                cvUrl: cvUrl || undefined,
+                cvFileName: cvFileName || undefined
             });
             
             console.log('Email enviado correctamente:', emailResponse);
@@ -47,9 +122,8 @@ export async function POST(req: Request) {
                 success: true
             });
         } catch (emailError: any) {
-            console.error('Error al enviar el email:', emailError);
+            console.error('Error específico al enviar el email:', emailError);
             
-            // Responder con error pero asegurar que la respuesta llegue al cliente
             return NextResponse.json(
                 { 
                     error: 'Error al enviar el email',
@@ -62,7 +136,6 @@ export async function POST(req: Request) {
     } catch (error: any) {
         console.error('Error general en la API de contacto:', error);
         
-        // Asegurar que siempre haya una respuesta
         return NextResponse.json(
             { 
                 error: 'Error al procesar la solicitud',

@@ -69,6 +69,8 @@ export default function ContactForm() {
             return;
         }
 
+        console.log('Archivo seleccionado:', file.name, 'Tamaño:', file.size, 'Tipo:', file.type);
+
         setFormData(prev => ({
             ...prev,
             cv: file
@@ -77,6 +79,14 @@ export default function ContactForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Validar que se adjunte un CV si el tipo de formulario es 'trabajo'
+        if (formType === 'trabajo' && !formData.cv) {
+            setSubmitStatus('error');
+            setErrorMessage('Por favor, adjunta tu CV para aplicar a una posición de trabajo.');
+            return;
+        }
+        
         setIsSubmitting(true);
         setSubmitStatus('idle');
         setErrorMessage('');
@@ -88,7 +98,7 @@ export default function ContactForm() {
                 setSubmitStatus('error');
                 setErrorMessage('La solicitud ha tardado demasiado tiempo. Por favor, inténtalo de nuevo.');
             }
-        }, 15000); // 15 segundos de timeout
+        }, 30000); // Aumentar a 30 segundos para dar más tiempo al servidor
         
         try {
             const formDataToSend = new FormData();
@@ -100,39 +110,59 @@ export default function ContactForm() {
             formDataToSend.append('empresa', formData.empresa || '');
             formDataToSend.append('mensaje', formData.mensaje);
             
-            if (formData.cv) {
+            if (formData.cv && formType === 'trabajo') {
                 formDataToSend.append('cv', formData.cv);
+                console.log('Adjuntando CV:', formData.cv.name, formData.cv.size);
+            } else if (formType === 'trabajo' && !formData.cv) {
+                console.log('Formulario de trabajo sin CV adjunto');
             }
 
             console.log('Enviando formulario...');
             
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                body: formDataToSend,
-            });
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    body: formDataToSend,
+                });
 
-            // Limpiar el timeout ya que recibimos respuesta
-            clearTimeout(timeoutId);
+                // Limpiar el timeout ya que recibimos respuesta
+                clearTimeout(timeoutId);
 
-            const result = await response.json();
-            console.log('Respuesta del servidor:', result);
+                let result;
+                try {
+                    result = await response.json();
+                    console.log('Respuesta del servidor:', result);
+                } catch (jsonError) {
+                    console.error('Error al parsear la respuesta JSON:', jsonError);
+                    throw new Error('Error al procesar la respuesta del servidor');
+                }
 
-            if (!response.ok) {
-                throw new Error(result.error || result.message || 'Error al enviar el mensaje');
+                if (!response.ok) {
+                    throw new Error(result?.error || result?.message || 'Error al enviar el mensaje');
+                }
+
+                setSubmitStatus('success');
+                
+                // Limpiar el formulario
+                setFormData({
+                    nombres: '',
+                    apellidos: '',
+                    email: '',
+                    telefono: '',
+                    empresa: '',
+                    mensaje: '',
+                    cv: null
+                });
+                
+                // Limpiar el input de archivo si existe
+                const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+                if (fileInput) {
+                    fileInput.value = '';
+                }
+            } catch (fetchError) {
+                console.error('Error en la petición fetch:', fetchError);
+                throw new Error('Error de conexión con el servidor. Por favor, inténtalo de nuevo.');
             }
-
-            setSubmitStatus('success');
-            
-            // Limpiar el formulario
-            setFormData({
-                nombres: '',
-                apellidos: '',
-                email: '',
-                telefono: '',
-                empresa: '',
-                mensaje: '',
-                cv: null
-            });
             
         } catch (error: any) {
             // Limpiar el timeout en caso de error
