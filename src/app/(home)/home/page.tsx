@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic';
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
 import { Carousel } from "@material-tailwind/react";
 
@@ -34,46 +34,49 @@ const HeroCarousel = dynamic(() => import("@/components/Carousel/HeroCarousel").
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Memoized animation variants
-  const animations = {
-    fadeIn: {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-    },
-    fadeInUp: {
-      initial: { opacity: 0, y: 30 },
-      animate: { opacity: 1, y: 0 },
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-    },
-    stagger: {
-      animate: {
-        transition: {
-          staggerChildren: 0.1,
-          delayChildren: 0.2
-        }
-      }
-    }
-  };
+  // Check for mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-  // Optimized data fetching with caching
+  // Optimized data fetching with caching and error handling
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const cachedPosts = sessionStorage.getItem('blogPosts');
-        if (cachedPosts) {
+        const cacheTimestamp = sessionStorage.getItem('blogPostsTimestamp');
+        const now = Date.now();
+        
+        // Use cache if it exists and is less than 5 minutes old
+        if (cachedPosts && cacheTimestamp && now - parseInt(cacheTimestamp) < 300000) {
           setPosts(JSON.parse(cachedPosts));
           setIsLoading(false);
           return;
         }
 
         const response = await fetch('/api/posts');
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        
         const data = await response.json();
         setPosts(data);
         sessionStorage.setItem('blogPosts', JSON.stringify(data));
+        sessionStorage.setItem('blogPostsTimestamp', now.toString());
       } catch (error) {
         console.error('Error fetching posts:', error);
+        // Use cached data as fallback even if it's old
+        const cachedPosts = sessionStorage.getItem('blogPosts');
+        if (cachedPosts) {
+          setPosts(JSON.parse(cachedPosts));
+        }
       } finally {
         setIsLoading(false);
       }
@@ -81,6 +84,40 @@ export default function Home() {
 
     fetchPosts();
   }, []);
+
+  // Memoized animation variants with mobile optimization
+  const animations = useMemo(() => ({
+    fadeIn: {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      transition: { 
+        duration: isMobile ? 0.4 : 0.8,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    },
+    fadeInUp: {
+      initial: { opacity: 0, y: isMobile ? 15 : 20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { 
+        duration: isMobile ? 0.4 : 0.8,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    },
+    stagger: {
+      animate: {
+        transition: {
+          staggerChildren: isMobile ? 0.05 : 0.1,
+          delayChildren: isMobile ? 0.1 : 0.2
+        }
+      }
+    }
+  }), [isMobile]);
+
+  // Optimized viewport config
+  const viewportConfig = useMemo(() => ({
+    once: true,
+    amount: isMobile ? 0.1 : 0.3
+  }), [isMobile]);
 
   const quienesSomosRef = useRef(null);
   const principiosRef = useRef(null);
@@ -98,6 +135,14 @@ export default function Home() {
       transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse text-2xl text-gray-600">Cargando...</div>
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -166,10 +211,7 @@ export default function Home() {
         variants={animations.fadeIn}
         initial="initial"
         whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
+        viewport={viewportConfig}
         id="quienes-somos"
         className="flex flex-col items-center justify-center mt-8"
         role="region"
@@ -203,8 +245,10 @@ export default function Home() {
               alt="Quienes Somos"
               width={1920}
               height={1080}
-              quality={100}
+              quality={85}
+              loading="lazy"
               className="w-full"
+              sizes="(max-width: 768px) 100vw, 60vw"
             />
           </div>
           <div className="flex flex-col w-full md:w-[40%] items-center px-4 md:px-0 relative z-10">
@@ -254,8 +298,10 @@ export default function Home() {
             alt="Quienes Somos"
             width={1920}
             height={1080}
-            quality={100}
+            quality={85}
+            loading="lazy"
             className="w-full h-auto transition-all duration-300 ease-in-out hover:scale-105 transform-gpu mb-16"
+            sizes="100vw"
           />
         </motion.div>
       </motion.section>
@@ -264,10 +310,7 @@ export default function Home() {
         variants={animations.fadeIn}
         initial="initial"
         whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
+        viewport={viewportConfig}
         id="propuesta"
         className="flex flex-col items-center justify-center mt-10"
         role="region"
@@ -324,10 +367,7 @@ export default function Home() {
         variants={animations.fadeIn}
         initial="initial"
         whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
+        viewport={viewportConfig}
         id="principios"
         className="flex flex-col md:flex-row w-full items-center justify-center mt-8"
         role="region"
@@ -412,8 +452,10 @@ export default function Home() {
             alt="Principios"
             width={1920}
             height={1080}
-            quality={100}
+            quality={85}
+            loading="lazy"
             className="w-full h-[650px] rounded-l-3xl rounded-r-none"
+            sizes="(max-width: 768px) 100vw, 60vw"
           />
         </motion.div>
       </motion.section>
@@ -425,7 +467,10 @@ export default function Home() {
           alt="Principios"
           width={800}
           height={600}
+          quality={85}
+          loading="lazy"
           className="w-[90%] h-auto rounded-xl"
+          sizes="90vw"
         />
       </motion.div>
       <div className="h-16 md:h-26"></div>
@@ -435,10 +480,7 @@ export default function Home() {
         variants={animations.fadeIn}
         initial="initial"
         whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
+        viewport={viewportConfig}
         id="team"
         className="flex flex-col md:flex-row w-full items-center justify-center mt-8 relative"
         role="region"
@@ -453,9 +495,10 @@ export default function Home() {
             alt="Equipo Cubika"
             width={1920}
             height={1080}
-            quality={100}
+            quality={85}
             priority
             className="w-full h-[650px] rounded-r-3xl rounded-l-none object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 60vw"
           />
         </motion.div>
 
@@ -493,7 +536,10 @@ export default function Home() {
           alt="Equipo Cubika"
           width={800}
           height={600}
+          quality={85}
+          loading="lazy"
           className="w-[90%] h-auto rounded-xl"
+          sizes="90vw"
         />
       </motion.div>
       <div className="h-16 md:h-26"></div>
@@ -502,10 +548,7 @@ export default function Home() {
         variants={animations.fadeIn}
         initial="initial"
         whileInView="animate"
-        viewport={{
-          once: true,
-          amount: 0.3
-        }}
+        viewport={viewportConfig}
         id="news"
         className="mx-4 lg:mx-14 py-12 bg-gray-50 rounded-3xl"
         role="region"
