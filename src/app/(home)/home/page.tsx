@@ -429,6 +429,75 @@ export default function Home() {
         />
       </motion.div>
       <div className="h-16 md:h-26"></div>
+
+      {/* Sección del Equipo */}
+      <motion.section
+        variants={animations.fadeIn}
+        initial="initial"
+        whileInView="animate"
+        viewport={{
+          once: true,
+          amount: 0.3
+        }}
+        id="team"
+        className="flex flex-col md:flex-row w-full items-center justify-center mt-8 relative"
+        role="region"
+        aria-labelledby="team-title"
+      >
+        <motion.div
+          variants={animations.fadeIn}
+          className="hidden md:block w-[60%] mb-8 md:mb-0"
+        >
+          <Image
+            src={team}
+            alt="Equipo Cubika"
+            width={1920}
+            height={1080}
+            quality={100}
+            priority
+            className="w-full h-[650px] rounded-r-3xl rounded-l-none object-cover object-center"
+          />
+        </motion.div>
+
+        <div className="flex flex-col w-full md:w-[60%] items-center justify-center px-4 md:px-8 mt-8 md:mt-0 md:ml-[-10%] relative z-10">
+          <div className="w-[310px] h-[3px] bg-primary my-4"></div>
+          <h2 className="text-center text-3xl lg:text-4xl font-bold uppercase mb-12">
+            EL EQUIPO QUE NOS DEFINE
+          </h2>
+
+          <div className="w-[90%] h-auto bg-white rounded-2xl p-8 shadow-lg md:ml-[-15%]">
+            <p className="text-base lg:text-lg">
+              Nuestro equipo directivo, gerencial, comercial, constructivo, de desarrollo y administrativo,
+              se caracteriza por la pasión y dedicación que se le da a cada vivienda de nuestros clientes,
+              donde buscamos dar una mejor calidad de vida.
+            </p>
+          </div>
+
+          <div className="w-fit max-w-[90%] bg-[#1B2845] rounded-2xl p-8 mt-8">
+            <p className="text-white text-xl lg:text-2xl font-bold text-center">
+              Pero sin duda lo que nos hace únicos es poder trascender y formar parte de un sueño de un nuevo hogar que perdurará en el tiempo.
+            </p>
+          </div>
+
+          <div className="flex justify-center w-full mt-8">
+            <Link href="/team" className="transition-all duration-300 ease-in-out hover:scale-110 transform-gpu">
+              <SecondaryButton text="Conoce a nuestro equipo" />
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.div className="block md:hidden w-full flex justify-center mt-8 mb-8">
+        <Image
+          src={team}
+          alt="Equipo Cubika"
+          width={800}
+          height={600}
+          className="w-[90%] h-auto rounded-xl"
+        />
+      </motion.div>
+      <div className="h-16 md:h-26"></div>
+
       <motion.section
         variants={animations.fadeIn}
         initial="initial"

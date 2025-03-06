@@ -13,40 +13,41 @@ import coverTeam from "../../../../public/images/team-web1.jpg";
 
 
 export default function Team() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1]
-      }
+  // Animaciones suaves
+  const fadeIn = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { 
+      duration: 1,
+      ease: [0.22, 1, 0.36, 1]
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1]
-      }
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { 
+      duration: 1,
+      ease: [0.22, 1, 0.36, 1]
     }
   };
 
   return (
     <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
+      initial="initial"
+      animate="animate"
       className="w-full overflow-x-hidden"
     >
-      <motion.div variants={itemVariants} className="relative">
-        <div className="mt-2 md:mt-8">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ 
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1]
+        }}
+        className="relative"
+      >
+        <div className="mt-2 md:mt-8 ">
           <Hero 
             title="El corazón detrás de"
             subtitle="nuestra visión"
@@ -54,25 +55,46 @@ export default function Team() {
             needBackground={false}
             overlay={
               <motion.div 
-                variants={itemVariants}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
                 className="absolute inset-0 bg-black/60 rounded-3xl z-[1]"
               >
                 <motion.div 
-                  variants={itemVariants}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
                   className="flex flex-col items-center justify-center h-full text-center"
                 >
                   <motion.h1
-                    variants={itemVariants}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.8,
+                      ease: [0.22, 1, 0.36, 1],
+                      delay: 0.4
+                    }}
                     className="text-6xl font-bold text-white uppercase"
                   >
                     El corazón detrás de
                   </motion.h1>
                   <motion.div 
-                    variants={itemVariants}
-                    className="h-px bg-white w-1/4 my-4 opacity-40"
+                    initial={{ width: 0 }}
+                    animate={{ width: "25%" }}
+                    transition={{ duration: 0.7, delay: 0.6 }}
+                    className="h-px bg-white my-4 opacity-40"
                   />
                   <motion.h2
-                    variants={itemVariants}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.8,
+                      ease: [0.22, 1, 0.36, 1],
+                      delay: 0.8
+                    }}
                     className="text-4xl font-bold text-white uppercase"
                   >
                     nuestra visión
@@ -83,7 +105,13 @@ export default function Team() {
           />
         </div>
         <motion.section
-          variants={itemVariants}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1]
+          }}
+          viewport={{ once: true }}
           className="px-4 md:px-8 lg:px-16 mb-16"
         >
           <SubHero
@@ -93,7 +121,13 @@ export default function Team() {
         </motion.section>
 
         <motion.section
-          variants={itemVariants}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ 
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1]
+          }}
+          viewport={{ once: true }}
           className="relative mb-16 md:mb-32 px-4 md:px-8 lg:px-12 mt-8 md:mt-16 max-w-[1800px] mx-auto"
         >
           {/* Timeline */}
@@ -102,12 +136,24 @@ export default function Team() {
 
           {/* Área Administrativa */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+            viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative"
           >
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-1"
             >
               <ButtonTextCard 
@@ -117,7 +163,13 @@ export default function Team() {
               />
             </motion.div>
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 justify-self-end shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image
@@ -131,12 +183,24 @@ export default function Team() {
 
           {/* Área de Ventas */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+            viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-2"
             >
               <ButtonTextCard
@@ -146,7 +210,13 @@ export default function Team() {
               />
             </motion.div>
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image
@@ -161,12 +231,24 @@ export default function Team() {
 
           {/* Área de Servicio */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+            viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-1"
             >
               <ButtonTextCard
@@ -176,7 +258,13 @@ export default function Team() {
               />
             </motion.div>
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image
@@ -190,12 +278,24 @@ export default function Team() {
 
           {/* Área de Operación */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ 
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+            viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center justify-center relative mt-16 md:mt-24"
           >
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full -z-[5] hidden md:block" />
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu z-10 order-1 md:order-2"
             >
               <ButtonTextCard
@@ -205,7 +305,13 @@ export default function Team() {
               />
             </motion.div>
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ 
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              viewport={{ once: true }}
               className="relative w-full md:w-[95%] h-[400px] rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <Image

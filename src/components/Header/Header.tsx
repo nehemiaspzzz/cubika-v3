@@ -36,7 +36,7 @@ export const Header = () => {
 
     return (
         <>
-            <header className="w-full flex justify-between items-center py-4 px-4 md:px-12 lg:px-32 fixed top-0 left-0 right-0 z-[200] bg-gradient-to-r from-[#1a2b4b] to-[#2a3b5b] backdrop-blur-md">
+            <header className="w-full flex justify-between items-center py-4 px-4 md:px-12 lg:px-30 fixed top-0 left-0 right-0 z-[200] bg-gradient-to-r from-[#1a2b4b] to-[#2a3b5b] backdrop-blur-md">
                 {/* Logo */}
                 <div className="relative">
                     <Link href="/home" className="relative z-[100] block p-2">
@@ -45,7 +45,7 @@ export const Header = () => {
                             alt="Cubika"
                             width={200}
                             height={50}
-                            className="w-48 md:w-52 lg:w-56"
+                            className="w-56 md:w-60 lg:w-64"
                             priority
                         />
                     </Link>
