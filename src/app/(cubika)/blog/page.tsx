@@ -41,12 +41,64 @@ export default function BlogPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/blog/posts')
-      .then(res => res.json())
-      .then(data => {
-        setLocalPosts(data);
+    // Función para obtener posts del primer repositorio
+    const fetchLocalPosts = async () => {
+      try {
+        const res = await fetch('/api/blog/posts');
+        if (!res.ok) throw new Error('Error fetching local posts');
+        return await res.json();
+      } catch (error) {
+        console.error('Error fetching local posts:', error);
+        return [];
+      }
+    };
+
+    // Función para obtener posts del segundo repositorio
+    const fetchSecondaryPosts = async () => {
+      try {
+        // Cambia esta URL por la de tu segundo repositorio
+        const res = await fetch('https://tu-segundo-repositorio.com/api/posts');
+        if (!res.ok) throw new Error('Error fetching secondary posts');
+        
+        // Adapta el formato de los datos si es necesario
+        const data = await res.json();
+        return data.map((post: any) => ({
+          id: post.id,
+          title: post.title,
+          content: post.content || post.description || '',
+          image: post.image || post.featured_image || '',
+          createdAt: post.createdAt || post.created_at || post.date || new Date().toISOString(),
+          template: 'simple'
+        }));
+      } catch (error) {
+        console.error('Error fetching secondary posts:', error);
+        return [];
+      }
+    };
+
+    // Obtener posts de ambas fuentes y combinarlos
+    const fetchAllPosts = async () => {
+      setIsLoading(true);
+      try {
+        const [primary, secondary] = await Promise.all([
+          fetchLocalPosts(),
+          fetchSecondaryPosts()
+        ]);
+
+        // Combinar y ordenar por fecha (más recientes primero)
+        const combinedPosts = [...primary, ...secondary].sort((a, b) => 
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        
+        setLocalPosts(combinedPosts);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchAllPosts();
   }, []);
 
   const containerVariants = {
