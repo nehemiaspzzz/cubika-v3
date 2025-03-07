@@ -511,7 +511,7 @@ export default function Home() {
         <div className="flex flex-col w-full md:w-[60%] items-center justify-center px-4 md:px-8 mt-8 md:mt-0 md:ml-[-10%] relative z-10">
           <div className="w-[310px] h-[3px] bg-primary my-4"></div>
           <h2 className="text-center text-3xl lg:text-4xl font-bold uppercase mb-12">
-            EL EQUIPO QUE NOS DEFINE
+            EL EQUIPO QUE <br /> NOS DEFINE
           </h2>
 
           <div className="w-[90%] h-auto bg-white rounded-2xl p-8 shadow-lg md:ml-[-15%]">
