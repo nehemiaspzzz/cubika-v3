@@ -54,6 +54,7 @@ export default function HomeLayout({
     <html lang="es">
       <body className={`${montserrat.variable} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
