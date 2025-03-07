@@ -6,8 +6,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Cubika',
-  description: 'Desarrolladora inmobiliaria',
+  title: 'GrupoCubika',
+  description: 'Desarrolladora inmobiliaria.',
 };
 
 export default function RootLayout({
