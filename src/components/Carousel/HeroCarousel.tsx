@@ -7,10 +7,11 @@ import { motion } from "framer-motion";
 interface Props {
   image: string,
   text: string,
-  logo: string
+  logo: string,
+  logoSize?: string // Parámetro opcional para ajustar el tamaño del logo
 }
 
-export const HeroCarousel = ({image, text, logo}: Props) => {
+export const HeroCarousel = ({image, text, logo, logoSize = "w-[200px] md:w-[300px]"}: Props) => {
   return (
     <div className="relative h-full w-full">
             <Image
@@ -38,7 +39,7 @@ export const HeroCarousel = ({image, text, logo}: Props) => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6 }}
-                className="w-[200px] md:w-[300px]"
+                className={logoSize} // Usar el tamaño personalizado
               >
                 <Image src={logo} alt="Hero Image" className="w-full h-auto" width={300} height={300} />
               </motion.div>

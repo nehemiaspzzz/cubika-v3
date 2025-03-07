@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import brand1 from "../../../../public/images/brand-arboleda.webp";
 import brand2 from "../../../../public/images/brand-jyl.webp";
 import brand3 from "../../../../public/images/brand-prados.webp";
+import brandModule from "../../../../public/images/banner-module-brands.png";
 import { ButtonTextCard } from "@/components/Cards/ButtonTextCard";
 import heroBrands from "../../../../public/images/hero-brands.jpg";
 
@@ -87,12 +88,39 @@ export default function Brands() {
           </motion.div>
         </motion.div>
 
-        {/* JYL */}
+        {/* Module */}
         <motion.div 
           variants={sectionVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24"
         >
           <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
+            <ButtonTextCard
+              title="Module"
+              text="Es una empresa que nace con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad. Nos especializamos en la fabricación e instalación de puertas, ventanas y muebles de cocina, asegurando altos estándares de calidad y precisión en cada proyecto."
+              buttonText="Conoce Module"
+              buttonLink="#"
+            />
+          </div>
+          <motion.div 
+            className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            <Image
+              src={brandModule}
+              alt="Module"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* JYL */}
+        <motion.div 
+          variants={sectionVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24"
+        >
+          <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
             <ButtonTextCard
               title="Jyl"
               text="Elevamos la gestión residencial a un arte. Nuestro compromiso con la excelencia se refleja en cada detalle, creando experiencias excepcionales que transforman espacios en comunidades distinguidas."
@@ -101,7 +129,7 @@ export default function Brands() {
             />
           </div>
           <motion.div 
-            className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
@@ -119,7 +147,7 @@ export default function Brands() {
           variants={sectionVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24"
         >
-          <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-1">
+          <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
             <ButtonTextCard
               title="Prados de Minerva"
               text="La fusión perfecta entre diseño contemporáneo y vida familiar. Un desarrollo residencial que hace realidad tus aspiraciones, donde cada espacio ha sido cuidadosamente diseñado para brindar una experiencia de vida excepcional."
@@ -128,7 +156,7 @@ export default function Brands() {
             />
           </div>
           <motion.div 
-            className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >

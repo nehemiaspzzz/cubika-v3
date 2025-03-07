@@ -21,6 +21,8 @@ import aboutUsImage from "../../../../public/images/about-hero.webp";
 import heroImage from "../../../../public/images/hero-logo.png";
 import heroImage2 from "../../../../public/images/logo-arboleda.png";
 import heroImage3 from "../../../../public/images/logo-jyl.png";
+import moduleHero from "../../../../public/images/banner-module.png";
+import moduleImage from "../../../../public/images/logo-module.png";
 
 // Lazy load components
 const SecondaryButton = dynamic(() => import("@/components/Buttons/SecondaryButton").then(mod => mod.SecondaryButton), { ssr: true });
@@ -190,12 +192,16 @@ export default function Home() {
             logo={heroImage2.src}
           />
           <HeroCarousel
+            image={moduleHero.src}
+            text="Es una empresa que nace con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad."
+            logo={moduleImage.src}
+            logoSize="w-[250px] md:w-[400px]"
+          />
+          <HeroCarousel
             image={aboutHero.src}
             text="Nos especializamos en la administración y manejo de ornato en proyectos habitacionales."
             logo={heroImage3.src}
           />
-          
-          
         </Carousel>
         <motion.div
           initial={{ opacity: 0 }}
