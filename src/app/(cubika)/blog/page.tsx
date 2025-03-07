@@ -128,11 +128,11 @@ export default function BlogPage() {
         >
           <div className="max-w-7xl mx-auto px-4 py-16">
             {/* Featured Post */}
-            {localPosts.length > 0 && (
+            {Array.isArray(localPosts) && localPosts.length > 0 && (
               <Link href={`/blog/${localPosts[0].id}`}>
                 <motion.article 
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 mb-16"
+                  variants={itemVariants}
+                  className="bg-white rounded-xl shadow-lg overflow-hidden mb-12"
                 >
                   <div className="flex flex-col md:flex-row h-full">
                     <div className="md:w-1/2 relative overflow-hidden">
@@ -194,64 +194,66 @@ export default function BlogPage() {
               variants={containerVariants}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {localPosts.slice(1).map((post, index) => (
-                <motion.div
-                  key={post.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Link href={`/blog/${post.id}`}>
-                    <article className="bg-white rounded-xl shadow-lg overflow-hidden h-full">
-                      {post.image && (
-                        <div className="relative h-48 overflow-hidden">
-                          <motion.img
-                            whileHover={{ scale: 1.1 }}
-                            transition={{ duration: 0.6 }}
-                            src={post.image}
-                            alt={post.title}
-                            className="w-full h-full object-cover"
-                          />
-                          {post.category && (
+              {Array.isArray(localPosts) && localPosts.length > 1 
+                ? localPosts.slice(1).map((post, index) => (
+                  <motion.div
+                    key={post.id}
+                    variants={itemVariants}
+                    whileHover={{ y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Link href={`/blog/${post.id}`}>
+                      <article className="bg-white rounded-xl shadow-lg overflow-hidden h-full">
+                        {post.image && (
+                          <div className="relative h-48 overflow-hidden">
+                            <motion.img
+                              whileHover={{ scale: 1.1 }}
+                              transition={{ duration: 0.6 }}
+                              src={post.image}
+                              alt={post.title}
+                              className="w-full h-full object-cover"
+                            />
+                            {post.category && (
+                              <motion.span 
+                                whileHover={{ scale: 1.05 }}
+                                className="absolute top-4 left-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
+                              >
+                                {post.category}
+                              </motion.span>
+                            )}
+                          </div>
+                        )}
+                        <div className="p-6">
+                          <h3 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2">
+                            {post.title}
+                          </h3>
+                          <p className="text-gray-600 mb-4 line-clamp-3">
+                            {post.content}
+                          </p>
+                          <div className="flex items-center justify-between mt-auto">
+                            <span className="text-sm text-gray-500">
+                              {new Date(post.createdAt).toLocaleDateString('es-MX', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              })}
+                            </span>
                             <motion.span 
-                              whileHover={{ scale: 1.05 }}
-                              className="absolute top-4 left-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
+                              whileHover={{ x: 10 }}
+                              className="text-primary inline-flex items-center"
                             >
-                              {post.category}
+                              Leer más
+                              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                              </svg>
                             </motion.span>
-                          )}
+                          </div>
                         </div>
-                      )}
-                      <div className="p-6">
-                        <h3 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2">
-                          {post.title}
-                        </h3>
-                        <p className="text-gray-600 mb-4 line-clamp-3">
-                          {post.content}
-                        </p>
-                        <div className="flex items-center justify-between mt-auto">
-                          <span className="text-sm text-gray-500">
-                            {new Date(post.createdAt).toLocaleDateString('es-MX', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}
-                          </span>
-                          <motion.span 
-                            whileHover={{ x: 10 }}
-                            className="text-primary inline-flex items-center"
-                          >
-                            Leer más
-                            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                          </motion.span>
-                        </div>
-                      </div>
-                    </article>
-                  </Link>
-                </motion.div>
-              ))}
+                      </article>
+                    </Link>
+                  </motion.div>
+                ))
+                : null}
             </motion.div>
           </div>
         </motion.div>

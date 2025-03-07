@@ -51,10 +51,7 @@ const ModuleSection = () => {
             
             <div className="space-y-4 text-lg text-gray-600">
               <p className="text-justify">
-                Es una empresa que nace con la visión de ofrecer soluciones arquitectónicas
-                personalizadas y de alta calidad. Nos especializamos en la fabricación e
-                instalación de puertas, ventanas y muebles de cocina, asegurando altos estándares de
-                calidad y precisión en cada proyecto.
+              Somos una empresa creada con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad. Nos especializamos en el diseño, fabricación e instalación de puertas, ventanas y muebles de cocina, garantizando altos estándares de precisión, durabilidad y estética en cada proyecto. Nuestro compromiso con la excelencia nos permite transformar espacios con productos que combinan funcionalidad, innovación y un impecable nivel de detalle.
               </p>
               
               <motion.div

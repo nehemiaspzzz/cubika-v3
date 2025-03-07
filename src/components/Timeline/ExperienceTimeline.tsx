@@ -6,7 +6,7 @@ import Image from 'next/image'
 // Definición de tipos para las propiedades de experiencia
 interface ExperienceProps {
   title: string;
-  company_name: string;
+  company_name?: string;
   date: string;
   points: string[];
 }

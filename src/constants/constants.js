@@ -19,15 +19,15 @@ const experiences = [
       title: "Arboleda Los Encinos",
       date: "Noviembre 2023",
       points: [
-        "Comprometidos con ofrecer una experiencia residencial excepcional, J&L se especializa en la administración y mantenimiento de nuestros desarrollos. Como empresa dedicada al ornato y cuidado urbano, J&L se enfoca en la conservación y embellecimiento de cada comunidad a través de servicios de mantenimiento, jardinización y ordenamiento urbano, asegurando espacios armoniosos, bien organizados y sostenibles.",
-       "Con un enfoque en la excelencia y la eficiencia, J&L transforma cada desarrollo en un entorno seguro y atractivo, garantizando el bienestar y la tranquilidad de sus residentes."
+        "Fiel a su filosofía de innovación, Cubika presenta Arboleda Los Encinos, un nuevo desarrollo residencial donde la naturaleza y el confort se integran en perfecta armonía. Actualmente en proceso de construcción, este proyecto contempla más de 400 viviendas, ofreciendo a las familias un entorno diseñado para elevar su calidad de vida.",
+        "Más que un conjunto de residencias, Arboleda Los Encinos redefine el concepto de hogar al fusionar la tranquilidad de su entorno con la sofisticación urbana. Además, introduce un innovador sistema de jardines verticales, que no solo embellece los espacios, sino que también promueve la sostenibilidad y el bienestar de sus residentes.", 
       ],
     },
     {
       title: "Modulé",
       date: "Marzo 2024",
       points: [
-        "Es una empresa que nace con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad. Nos especializamos en la fabricación e instalación de puertas, ventanas y muebles de cocina, asegurando altos estándares de calidad y precisión en cada proyecto."
+        "Somos una empresa creada con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad. Nos especializamos en el diseño, fabricación e instalación de puertas, ventanas y muebles de cocina, garantizando altos estándares de precisión, durabilidad y estética en cada proyecto. Nuestro compromiso con la excelencia nos permite transformar espacios con productos que combinan funcionalidad, innovación y un impecable nivel de detalle."
       ],
     },
     {

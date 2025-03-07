@@ -193,7 +193,7 @@ export default function Home() {
           />
           <HeroCarousel
             image={moduleHero.src}
-            text="Es una empresa que nace con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad."
+            text="Somos una empresa creada con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad."
             logo={moduleImage.src}
             logoSize="w-[250px] md:w-[400px]"
           />

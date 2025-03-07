@@ -178,7 +178,7 @@ export default function About() {
                         }}
                         viewport={{ once: true }}
                     >
-                        <SubHero title="Nuestro crecimiento Empresarial" subtitle="En Cubika, transformamos terrenos en hogares sostenibles, con un enfoque en diseño, innovación y desarrollo urbano. Desde nuestra fundación, hemos trabajado para crear experiencias de vida únicas que respeten el medio ambiente y mejoren la calidad de vida de nuestros clientes" />
+                        <SubHero title="Nuestro crecimiento Empresarial"/>
                     </motion.div>
                     <motion.div variants={itemVariants}>
                         <ExperienceTimeline experiences={experiences} />

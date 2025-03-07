@@ -95,9 +95,9 @@ export default function Brands() {
         >
           <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
             <ButtonTextCard
-              title="Module"
-              text="Es una empresa que nace con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad. Nos especializamos en la fabricación e instalación de puertas, ventanas y muebles de cocina, asegurando altos estándares de calidad y precisión en cada proyecto."
-              buttonText="Conoce Module"
+              title="Modulé"
+              text="Somos una empresa creada con la visión de ofrecer soluciones arquitectónicas personalizadas y de alta calidad. Nos especializamos en el diseño, fabricación e instalación de puertas, ventanas y muebles de cocina, garantizando altos estándares de precisión, durabilidad y estética en cada proyecto. Nuestro compromiso con la excelencia nos permite transformar espacios con productos que combinan funcionalidad, innovación y un impecable nivel de detalle."
+              buttonText="Conoce Modulé"
               buttonLink="#"
             />
           </div>
