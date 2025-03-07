@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "../../../src/app/globals.css";
 import { Footer } from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
+import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

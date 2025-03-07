@@ -29,7 +29,6 @@ const SecondaryButton = dynamic(() => import("@/components/Buttons/SecondaryButt
 const PrimaryCard = dynamic(() => import("@/components/Cards/PrimaryCard").then(mod => mod.PrimaryCard), { ssr: true });
 const ImageTextCard = dynamic(() => import("@/components/Cards/ImageTextCard").then(mod => mod.ImageTextCard), { ssr: true });
 const Header = dynamic(() => import("@/components/Header/Header").then(mod => mod.Header), { ssr: true });
-const Footer = dynamic(() => import("@/components/Footer/Footer").then(mod => mod.Footer), { ssr: true });
 const PostsCard = dynamic(() => import("@/components/Posts/PostCard").then(mod => mod.PostsCard), { ssr: true });
 const HeroCarousel = dynamic(() => import("@/components/Carousel/HeroCarousel").then(mod => mod.HeroCarousel), { ssr: true });
 
@@ -627,7 +626,6 @@ export default function Home() {
           </div>
         </motion.div>
       </motion.section>
-      <Footer />
     </motion.div>
   );
 }
