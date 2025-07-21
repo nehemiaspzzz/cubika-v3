@@ -8,14 +8,6 @@ const experiences = [
       ],
     },
     {
-      title: "Prados de Minerva",
-      date: "Noviembre 2022",
-      points: [
-        "Con el compromiso de crear espacios excepcionales, se desarrolla Prados de Minerva, un residencial donde el diseño contemporáneo y la vida familiar se fusionan a la perfección. Cada espacio ha sido cuidadosamente pensado para brindar una experiencia de vida única.",
-        "Con la construcción de 350 viviendas, Prados de Minerva ha brindado a cientos de familias guatemaltecas la oportunidad de acceder a su primera vivienda, contribuyendo así al crecimiento del mercado inmobiliario y al bienestar de la comunidad."
-      ],
-    },
-    {
       title: "Arboleda Los Encinos",
       date: "Noviembre 2023",
       points: [
