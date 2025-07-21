@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import brand1 from "../../../../public/images/brand-arboleda.webp";
 import brand2 from "../../../../public/images/brand-jyl.webp";
-import brand3 from "../../../../public/images/brand-prados.webp";
 import brandModule from "../../../../public/images/banner-module-brands.png";
 import { ButtonTextCard } from "@/components/Cards/ButtonTextCard";
 import heroBrands from "../../../../public/images/hero-brands.jpg";
@@ -136,33 +135,6 @@ export default function Brands() {
             <Image
               src={brand2}
               alt="JYL Servicios"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </motion.div>
-        </motion.div>
-
-        {/* Prados de minerva */}
-        <motion.div 
-          variants={sectionVariants}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center justify-center relative mt-12 md:mt-24"
-        >
-          <div className="w-full md:w-[95%] transition-all duration-300 ease-in-out hover:scale-105 transform-gpu order-1 md:order-2">
-            <ButtonTextCard
-              title="Prados de Minerva"
-              text="La fusión perfecta entre diseño contemporáneo y vida familiar. Un desarrollo residencial que hace realidad tus aspiraciones, donde cada espacio ha sido cuidadosamente diseñado para brindar una experiencia de vida excepcional."
-              buttonText="Explora Prados"
-              buttonLink="/prados"
-            />
-          </div>
-          <motion.div 
-            className="relative w-full md:w-[95%] h-[300px] md:h-[400px] rounded-[16px] md:rounded-[24px] overflow-hidden order-2 md:order-1 shadow-lg hover:shadow-xl transition-shadow duration-300"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-          >
-            <Image
-              src={brand3}
-              alt="Prados de Minerva"
               fill
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
