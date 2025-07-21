@@ -13,7 +13,6 @@ import principios from "../../../../public/images/principios.webp";
 import cubika from "../../../../public/images/cubika-img.webp";
 import arboleda from "../../../../public/images/arboleda-img.webp";
 import jardines from "../../../../public/images/jl-image.webp";
-import prados from "../../../../public/images/prados-image.webp";
 import team from "../../../../public/images/team-meet.webp";
 import brandHero from "../../../../public/images/hero-logo.webp";
 import aboutHero from "../../../../public/images/brand-hero3.webp";
@@ -356,13 +355,6 @@ export default function Home() {
               title="Arboleda los Encinos"
               text="Construimos hogares sostenibles en un entorno natural, con cercania a la ciudad."
               image={arboleda}
-            />
-          </div>
-          <div className="w-full h-[300px] md:h-[400px] mb-8">
-            <ImageTextCard
-              title="Prados de Minerva"
-              text="Nuestro primer proyecto habitacional en el mercado guatemalteco brindado acceso a la primera vivienda."
-              image={prados}
             />
           </div>
         </motion.div>
