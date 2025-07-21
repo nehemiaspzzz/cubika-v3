@@ -16,7 +16,6 @@ const ExperienceTimeline = ({ experiences }: { experiences: ExperienceProps[] })
   // Mapeo de logos para cada experiencia
   const logos = [
     'cubika-logo.png',
-    'prados-logo.png',
     'arboleda-logo.png',
     'icono-modulé.png',
     'logo-jyl.png'
@@ -58,7 +57,7 @@ const TimelineItem = ({
   isLast: boolean;
 }) => {
   // Determinar si el logo necesita un tratamiento especial (más grande)
-  const needsLargerLogo = logo === 'prados-logo.png' || logo === 'arboleda-logo.png' || logo === 'icono-modulé.png';
+  const needsLargerLogo = logo === 'arboleda-logo.png' || logo === 'icono-modulé.png';
   
   return (
     <div className="flex items-center mb-24 relative">
