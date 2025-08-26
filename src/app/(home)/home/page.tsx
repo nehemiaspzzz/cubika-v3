@@ -334,7 +334,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           variants={sectionVariants}
-          className="w-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4"
+          className="w-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3"
         >
           <div className="w-full h-[300px] md:h-[400px] mb-8">
             <ImageTextCard
